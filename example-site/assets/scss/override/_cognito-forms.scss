@@ -1,0 +1,30 @@
+.cognito {
+  // counteract L/R padding
+  margin-left: -8px !important;
+  margin-right: -7px !important;
+
+  .c-required .c-label:after {
+    color: $error !important;
+  }
+  
+  .c-forms-form .c-validation, 
+  .c-forms-form .c-error:after, 
+  .c-forms-form .c-error .toggle-on:after,
+  .c-forms-form .c-validation-icon {
+    background-color: $error !important;
+  }
+
+  .c-forms-form .c-validation {
+    padding: 5px !important;
+  }
+
+  .c-editor textarea {
+    padding: 10px;
+  }
+
+  // Hide Cognito logo
+  div a {
+    visibility: collapse;
+  }
+
+}
