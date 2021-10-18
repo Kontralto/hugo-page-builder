@@ -1,0 +1,11 @@
+{{ if .Params.heading }}
+  <h2 class="heading">{{ .Params.heading }}</h2>
+{{ end }}
+{{ if .Params.subheading }}
+  <h3 class="h5 subheading mt-2">{{ .Params.subheading }}</h2>
+{{ end }}
+{{ if .Content }}
+  <div class="mt-4">
+    {{ .Content }}
+  </div>
+{{ end }}

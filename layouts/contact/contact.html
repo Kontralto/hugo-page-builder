@@ -1,0 +1,36 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-contact{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "banner" }}
+  {{ partial "component/banner/intro" . }}
+{{ end }}
+{{ define "content" }}
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      {{ .Content }}
+
+      {{ if .Params.ctaText }}
+        {{ .Params.ctaText }}.
+      {{ end }}
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-8 mt-5">
+
+      <div class="cognito">
+        <script src="https://www.cognitoforms.com/s/7iOOiPtyJEOIIYVgB93WUQ"></script>
+        <script>Cognito.load("forms", { id: "1" });</script>
+      </div>
+
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ define "components" }}{{ end }}
+{{ define "subpages" }}{{ end }}
+{{ define "contact" }}<!-- empty -->{{ end }}

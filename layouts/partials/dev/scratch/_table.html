@@ -1,0 +1,22 @@
+<table class="table table-sm">
+  <tbody>
+    {{ range $k, $v := . }}
+    <tr>
+      <td class="small">{{ $k }}</td>
+      {{ if or 
+        (eq $k "meta")
+        (eq $k "pages")
+        (eq $k "cascade")
+        (eq $k "tags")
+        (eq $k "listItems")
+      }}
+      <td class="small">
+        {{ partial "dev/scratch/_table" $v }}
+      </td> 
+      {{ else }}
+      <td class="small">{{ $v }}</td>
+      {{ end }}
+    </tr>
+    {{ end }}
+  </tbody>
+</table>

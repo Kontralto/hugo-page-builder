@@ -1,0 +1,19 @@
+<!-- do not use the component wrapper on page header banners -->
+<!-- because this causes double-rendering of draft notice and scratch printout -->
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layout/component/banner/hero-fullscreen" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+
+{{ with $scratch.Get "datasource" }}
+<div class="component component-banner-hero-with-date">
+  <div id="hero" class="hero-image" style="background-image: url('{{ .Params.image | relURL }}')">
+    <div class="container ">
+      <div class="text text-white">
+        <h1>{{ .Params.heading }}</h1>
+        <h2 class="h3">{{ .Params.subheading }}</h2>
+        <span class="small">Updated {{ .Lastmod.Format "January 2, 2006" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

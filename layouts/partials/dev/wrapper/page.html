@@ -1,0 +1,18 @@
+{{ $scratch := . }}
+
+{{ if $scratch.Get "draftNoticeActive" }}
+  <div class="wrapper-page">
+    <div class="is-draft is-draft-page">
+      <div class="draft-notice pt-2 pb-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              This page is a draft
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- The final closing divs come from wrapper/bottom -->
+{{ end }}
+{{ partial "dev/scratch/display" $scratch }}
+  

@@ -1,0 +1,27 @@
+<!-- Must pass a Scratch context to this partial -->
+{{ .Set "isDevEnv" 
+  (or 
+    (eq hugo.Environment "develop") 
+    (and (site.IsServer) (not (eq hugo.Environment "production") ))
+  )
+}}
+{{ .Set "showHints" 
+  (and 
+    (.Get "isDevEnv")
+    (site.Params.debug.show_hints)
+  )
+}}
+{{ .Set "draftNoticeEnabled" 
+  (and 
+    (.Get "isDevEnv")
+    (site.Params.debug.show_drafts)
+  )
+}}
+{{ .Set "analyticsEnabled"
+  (and
+    (not site.IsServer)
+    (eq hugo.Environment "production")
+  )
+}}
+
+{{ return . }}

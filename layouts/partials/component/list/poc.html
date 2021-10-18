@@ -1,0 +1,13 @@
+
+{{ with partial "dev/scratch/set-for-item-context" . }}
+{{ if .hasPage }}
+  {{ .page.Path }}
+{{ end }}
+
+{{ range .pages }}
+  <br>
+  {{ .Path }}
+{{ end }}
+
+<hr>
+{{ end }}

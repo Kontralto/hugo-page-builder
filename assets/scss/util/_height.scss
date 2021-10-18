@@ -1,0 +1,9 @@
+.wrapper {
+  .fullscreen {
+    height: 100vh;
+  }
+  :first-child .fullscreen {
+      height: calc(100vh - #{$header-height});
+    }
+  
+}

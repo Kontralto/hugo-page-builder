@@ -1,0 +1,58 @@
+{{ $scratch := . }}
+{{ $context := $scratch.Get "context" }}
+
+<!-- meta defaults -->
+{{ $scratch.SetInMap "meta" "title"            site.Params.meta.title            }}
+{{ $scratch.SetInMap "meta" "description"      site.Params.meta.description      }}
+{{ $scratch.SetInMap "meta" "type"             site.Params.meta.type             }}
+{{ $scratch.SetInMap "meta" "url"              (fmt.Printf "%s%s" site.Params.meta.url $context.RelPermalink)  }}
+{{ $scratch.SetInMap "meta" "image"            site.Params.meta.image            }}
+{{ $scratch.SetInMap "meta" "twitter_card"     site.Params.meta.twitter_card     }}
+{{ $scratch.SetInMap "meta" "twitter_site"     site.Params.meta.twitter_site     }}
+{{ $scratch.SetInMap "meta" "twitter_creator"  site.Params.meta.twitter_creator  }}
+{{ $scratch.SetInMap "meta" "canonicalUrl"     (fmt.Printf "%s%s" site.Params.meta.url $context.RelPermalink)  }}
+
+<!-- meta overrides -->
+{{ if $context.Params.heading }}            
+  {{ $scratch.SetInMap "meta" "title"            (fmt.Printf "%s - %s" $context.Params.heading site.Title) }}
+{{ end }}
+
+{{ if $context.Params.meta.title }}
+  {{ $scratch.SetInMap "meta" "title"            $context.Params.meta.title           }}
+{{ end }}
+
+{{ if $context.Params.meta.description }}
+  {{ $scratch.SetInMap "meta" "description"      $context.Params.meta.description     }}
+{{ end }}
+
+{{ if $context.Params.meta.type }}
+  {{ $scratch.SetInMap "meta" "type"             $context.Params.meta.type            }}
+{{ end }}
+
+{{ if $context.Params.meta.url }}
+  {{ $scratch.SetInMap "meta" "url"              $context.Params.meta.url             }}
+{{ end }}
+
+{{ if $context.Params.meta.image }}
+  {{ $scratch.SetInMap "meta" "image"            $context.Params.meta.image           }}
+{{ end }}
+
+{{ if $context.Params.meta.twitter_card }}
+  {{ $scratch.SetInMap "meta" "twitter_card"     $context.Params.meta.twitter_card    }}
+{{ end }}
+
+{{ if $context.Params.meta.twitter_site }}
+  {{ $scratch.SetInMap "meta" "twitter_site"     $context.Params.meta.twitter_site    }}
+{{ end }}
+
+{{ if $context.Params.meta.twitter_creator }}
+  {{ $scratch.SetInMap "meta" "twitter_creator"  $context.Params.meta.twitter_creator }}
+{{ end }}
+
+{{ if $context.Params.meta.abs_canonical }}
+  {{ $scratch.SetInMap "meta" "canonicalUrl" $context.Params.meta.abs_canonical }}
+{{ else if $context.Params.meta.rel_canonical}}
+  {{ $scratch.SetInMap "meta" "canonicalUrl" (fmt.Printf "%s%s" site.Params.meta.url $context.Params.meta.rel_canonical) }}
+{{ end }}
+
+{{ return $scratch }}

@@ -1,0 +1,9 @@
+{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
+
+{{ if and (.Params.component) ($scratch.Get "layoutRequestedExists") }}
+  {{ partial .Params.component . }}
+{{ else if not ($scratch.Get "layoutRequested") }}
+  {{ partial "component/content/block" . }}
+{{ else }}
+  {{ partial "component/hint/missing-layout-check" $scratch }}
+{{ end }}

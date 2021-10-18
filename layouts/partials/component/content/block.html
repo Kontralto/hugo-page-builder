@@ -1,0 +1,9 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layout/component/content/block" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+
+{{ with $scratch.Get "datasource"}}
+{{ partial "dev/wrapper/component" $scratch }}
+  {{ partial "component/content/block-no-wrap" . }}
+{{ partial "dev/wrapper/bottom" $scratch }}
+{{ end }}

@@ -1,0 +1,27 @@
+{{ $scratch := . }}
+{{ $context := ($scratch.Get "context") }}
+
+{{ if and ($scratch.Get "isDevEnv") site.Params.debug.print_scratch }}
+  <div class="component component-dev-scratch-display border-top border-thick">
+    <div class="container mt-6 border-start border-thick">
+      <div class="row">
+
+        <div class="col-12">
+          <h4>Context: {{ $context.Params.heading }}</h4>
+          <h6 class="mb-6">{{ $context.File.Path }}</h6>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <h6 >Scratch</h6>
+          {{ partial "dev/scratch/_table" $scratch.Values }}
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <h6>Params</h6>
+          {{ partial "dev/scratch/_table" $context.Params }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+{{ end }}

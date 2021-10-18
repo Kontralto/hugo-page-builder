@@ -1,0 +1,3 @@
+{{ if and .Params.ctaText .Params.ctaLink }}
+  <a class="button button-white" href="{{ .Params.ctaLink | relURL }}">{{ .Params.ctaText }}</a>
+{{ end }}

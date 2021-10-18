@@ -1,0 +1,47 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layouts/partials/components/list/icon-overview" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch := partial "dev/scratch/enrich/default-column-class" (dict "columnClass" "col-12 col-md-6 col-lg-3" "scratch" $scratch ) }}
+
+{{ $context := $scratch.Get "context" }}
+{{ $datasource := $scratch.Get "datasource" }}
+
+{{ partial "dev/wrapper/component" $scratch }}
+
+  {{ if ($scratch.Get "hasListItems") }}
+  <div class="component component-list-page-feed">
+    <div class="container pt-8 pb-8 pb-md-14 pt-md-14">
+      <div class="row justify-content-start">
+        {{ if and ($scratch.Get "hasDatasource") $datasource.Params.heading }}
+
+          <div class="col-12">
+            <h2 class="text-center mb-3 text-gray-700">{{ $datasource.Params.heading }} </h2>
+          </div>
+        {{ end }}
+
+        {{ range ($scratch.Get "listItems") }}
+          <div class="mb-1 {{ $scratch.Get "columnClass" }}">
+            {{ partial "element/summary/icon" . }}
+          </div>
+        {{ end }}
+
+        {{ if not ($context.Params.ctahide) }}
+          <div class="col-12 text-center">
+            {{ partial "element/button/primary" ($scratch.Get "datasource") }}
+          </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+
+  {{ else }}
+    {{ if not ($scratch.Get "hasDatasource") }}
+    {{ end }}
+    {{ if not ($scratch.Get "hasListRoot") }}
+      {{ partial "component/hint/no-items" $scratch }}
+    {{ end }}
+  {{ end }}
+
+{{ partial "dev/wrapper/bottom" $scratch }}
+

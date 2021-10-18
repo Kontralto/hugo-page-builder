@@ -1,0 +1,29 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+
+{{ $pathBase := (index (split (path.Base .Path) ".") 0) }}
+{{ $pathBase }} <br>
+
+{{ if not 
+  (or 
+    (eq (path.Base $pathBase) "index") 
+    (eq (path.Base $pathBase) "_index") 
+  )
+}}
+  {{ $scratch.Set "componentDirectoryPath" (printf "%s/%s" 
+    (index (split .Path ".") 0) 
+    ($scratch.Get "componentDirectory"))
+  }}
+{{ else }}
+  {{ $scratch.Set "componentDirectoryPath" (printf "%s/%s" 
+    (path.Dir .Path) 
+    ($scratch.Get "componentDirectory"))
+  }}
+{{ end }}
+
+{{ $componentDirectory := .GetPage ($scratch.Get "componentDirectoryPath") }}
+
+{{ with $componentDirectory }}
+  {{ $scratch.Set "components" (.Resources.ByType "page") }}
+{{ end }}
+
+{{ return $scratch.Get "components" }}

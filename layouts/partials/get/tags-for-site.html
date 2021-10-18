@@ -1,0 +1,25 @@
+<!-- this should get all tags by "pretty name" from pages -->
+<!-- should we normalize the names at all? -->
+
+<!-- should return a map such that 
+  
+  partial "tag-anchor-by-name"
+  [...(name, anchorized-name)...] 
+  AND 
+  partial "tag-name-by-anchor"
+  [...(anchorizedName, name)...] 
+
+-->
+
+{{ $scratch := newScratch }}
+{{ $tags := slice }}
+{{ $scratch.Set "tags" $tags }}
+
+<!-- get all tags -->
+{{ range site.Pages }}
+  {{ if .Params.tags }}
+    {{ $scratch.Set "tags" (($scratch.Get "tags") | append .Params.Tags | uniq ) }}
+  {{ end }}
+{{ end }}
+
+{{ return $scratch.Get "tags" }}

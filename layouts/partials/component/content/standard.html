@@ -1,0 +1,11 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layout/component/content/standard" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+
+{{ with $scratch.Get "datasource" }}
+{{ partial "dev/wrapper/component" $scratch }}
+  {{ if .Content }}
+    {{ partial "component/content/standard-no-wrap" . }}
+  {{ end }}
+{{ partial "dev/wrapper/bottom" $scratch }}
+{{ end }}

@@ -1,0 +1,74 @@
+{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layouts/partials/components/list/page-feed" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch := partial "dev/scratch/enrich/default-column-class" (dict "columnClass" "col-12" "scratch" $scratch ) }}
+
+{{ $context := $scratch.Get "context" }}
+
+{{ partial "dev/wrapper/component" $scratch }}
+
+{{ if and ($scratch.Get "hasDatasource") ($scratch.Get "hasListItems") }}
+
+  <div class="component component-list-page-feed">
+    <div class="container pb-6 pt-6 pb-md-10 pt-md-10">
+      <div class="page-feed row">
+
+        <!-- for now do not show the header -->
+        <!-- TODO for later, split into component/fragment/header  -->
+        <!-- 
+        {{ if and ($scratch.Get "hasPage") ($scratch.Get "datasource").Params.heading }}
+          <div class="col-12">
+            <h2 class="text-center mb-3 text-gray-700">{{ ($scratch.Get "datasource").Params.heading }} </h2>
+          </div>
+        {{ end }} 
+        -->
+
+      <!-- .Paginate needs a page context -->
+      <!-- use home page to in case page is not set -->
+      {{ range ( ($scratch.Get "datasource").Paginate ($scratch.Get "listItems").ByDate.Reverse 5).Pages }}
+
+          <div class="border-top border-primary page-feed-item mb-2  {{ $scratch.Get "columnClass" }}">
+            {{ $scratch := partial "dev/scratch/set-for-item-context" .}}
+            {{ partial "dev/wrapper/component" $scratch }}
+                <a href="{{ .Permalink }}">
+                  <div class="pt-2 pb-2">
+
+                    <h2 class="heading">
+                      {{ .Params.heading }}
+                    </h2>
+                    <h3>{{ .Params.subheading }}</h3>
+                    <p>
+                      {{ .Date.Format "January 2, 2006" }}
+                    </p>
+
+                  </div>
+                </a>
+            {{ partial "dev/wrapper/bottom" $scratch }}
+          </div>
+
+      {{ end }}
+
+      <!-- 
+        if this component is going to be dynamically generated from content, 
+        it needs to receive a pagination context that is for the parent page.
+
+        But this should be override-able for manual use of hte component
+      -->
+      <div class="d-flex justify-content-center col-12 ">
+        {{ template "_internal/pagination.html" ($scratch.Get "datasource") }}
+      </div>
+        
+      </div>
+    </div>
+  </div>
+
+  {{ else }}
+    {{ if not ($scratch.Get "hasDatasource") }}
+      {{ partial "component/hint/no-content" $scratch }}
+    {{ end }}
+    {{ if not ($scratch.Get "hasListItems") }}
+      {{ partial "component/hint/no-items" $scratch }}
+    {{ end }}
+  {{ end }}
+  
+{{ partial "dev/wrapper/bottom" $scratch }}
