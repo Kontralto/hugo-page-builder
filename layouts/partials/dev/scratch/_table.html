@@ -4,11 +4,8 @@
     <tr>
       <td class="small">{{ $k }}</td>
       {{ if or 
-        (eq $k "meta")
-        (eq $k "pages")
-        (eq $k "cascade")
-        (eq $k "tags")
-        (eq $k "listItems")
+        (reflect.IsMap $v)
+        (reflect.IsSlice $v)
       }}
       <td class="small">
         {{ partial "dev/scratch/_table" $v }}

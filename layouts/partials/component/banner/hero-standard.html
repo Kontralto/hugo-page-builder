@@ -1,11 +1,9 @@
 {{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layout/component/banner/intro" }}
+{{ $path := "layout/component/banner/hero-standard" }}
 {{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
-
-{{ $context := $scratch.Get "context" }}
 
 {{ with $scratch.Get "datasource" }}
   {{ partial "dev/wrapper/component" $scratch }}
-    {{ partial "component/banner/intro-no-wrap" . }}
+    {{ partial "component/banner/hero-standard-no-wrap" . }}
   {{ partial "dev/wrapper/bottom" $scratch }}
 {{ end }}

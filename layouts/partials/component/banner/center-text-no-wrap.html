@@ -1,0 +1,29 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layout/component/banner/center-text" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+
+{{ with $scratch.Get "datasource" }}
+  {{ if or .Params.heading .Content }}
+  <div class="component component-banner-center-text">
+    <div class="strip bg-primary bg-cover bg-position-top bg-overlay" style='background-image: url("{{ .Params.background | relURL }}");'>
+      <div class="container pt-8 pb-8 pb-md-12 pt-md-12">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 text-center text-white">
+            {{ if .Params.heading }}
+              <h2>{{ .Params.heading }}</h2>
+            {{ end }}
+
+            {{ .Content }}
+
+            {{ if not ($scratch.Get "ctaHide") }}
+              {{ partial "element/button/white" . }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ else }}
+    {{ partial "component/hint/no-content" $scratch }}
+  {{ end }}
+{{ end }}

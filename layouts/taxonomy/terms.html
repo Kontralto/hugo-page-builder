@@ -1,0 +1,13 @@
+{{ define "banner" }}<!---->{{ end }}
+{{ define "content" }}
+
+{{ .Render "terms/heading" }}
+{{ .Render "terms/top-terms" }}
+{{ .Render "term-cloud" }}
+
+{{ $tags := partial "get/tags-for-site" . }}
+  
+{{ end }}
+{{ define "components" }}<!---->{{ end }}
+{{ define "subpages" }}<!-- -->{{ end }}
+{{ define "contact" }}{{ end }}

@@ -1,0 +1,26 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layout/component/banner/intro" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+
+{{ $context := $scratch.Get "context" }}
+
+{{ with $scratch.Get "datasource" }}
+  {{ if or .Params.heading .Params.subheading }}
+  <div class="component component-banner-intro">
+    <div class="container text-primary mb-2 pt-6 pt-md-10">
+      <div class="row">
+        <div class="col-12">
+          {{ if .Params.heading }}
+            <h1 class="title-2">{{ .Params.heading }}</h1>
+          {{ end }}
+          {{ if .Params.subheading }}
+            <h2 class="h5 subheading mt-2 ps-6">{{ .Params.subheading }}</h2>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ else }}
+    {{ partial "component/hint/no-content" $scratch }}
+  {{ end }}
+{{ end }}

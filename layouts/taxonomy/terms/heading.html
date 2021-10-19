@@ -1,0 +1,19 @@
+<div class="component taxonomy-terms-heading">
+  <div id="hero" class="hero-image" style="background-image: url('{{ .Params.image | relURL }}')">
+    <div class="container">
+      <div class="text text-white">
+        {{ if .Params.heading }}
+          <h1>{{ .Params.heading }}</h1>
+        {{ else }}
+          <h1>{{ title .Data.Plural }}</h1>
+        {{ end }}
+        
+        {{ if .Params.subheading }}
+          <h2 class="h3">{{ .Params.subheading }}</h2>
+        {{ else }}
+          <h2 class="h3">{{ title (printf "Explore content by %s" .Data.Singular) }}</h2>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

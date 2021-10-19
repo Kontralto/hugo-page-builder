@@ -1,8 +1,9 @@
 {{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
 
+<!-- get filename without extension -->
 {{ $pathBase := (index (split (path.Base .Path) ".") 0) }}
-{{ $pathBase }} <br>
 
+<!-- build path to component directory -->
 {{ if not 
   (or 
     (eq (path.Base $pathBase) "index") 
@@ -20,10 +21,13 @@
   }}
 {{ end }}
 
+<!-- get component directory root -->
 {{ $componentDirectory := .GetPage ($scratch.Get "componentDirectoryPath") }}
 
+<!-- get components in directory -->
 {{ with $componentDirectory }}
   {{ $scratch.Set "components" (.Resources.ByType "page") }}
 {{ end }}
 
+<!-- return -->
 {{ return $scratch.Get "components" }}

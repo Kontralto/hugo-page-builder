@@ -1,0 +1,41 @@
+{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
+{{ $scratch := partial "dev/scratch/enrich/default-column-class" (dict "columnClass" "col-12 col-md-4" "scratch" $scratch ) }}
+
+{{ $scratch.Set "quantity" 3 }}
+{{ if .Params.quantityToHighlight }}
+  {{ $scratch.Set "quantity" .Params.quantityToHighlight }}
+{{ end }}
+
+{{ $context := $scratch.Get "context" }}
+{{ $colClass := $scratch.Get "columnClass" }}
+
+{{ $featuredPages := (first ($scratch.Get "quantity") (where .Pages "Params.featured" true)) }}
+{{ $hasFeaturedPages := gt (len $featuredPages) 0 }}
+
+{{ if $hasFeaturedPages }}
+<div class="component taxonomy-term-featured">
+  <div class="container pt-6 pb-6">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <h2>Featured {{ title .Data.Term }} Content</h2>
+      </div>
+      {{ range $featuredPages }}
+      {{ .Params.image }}
+          <div class="{{$colClass}} mb-3">
+            <a href="{{.Name}}" class="text-decoration-none" >
+              <div class="card bg-primary text-white">
+                {{ if .Params.image }}
+                  <img src="{{.Params.image}}" class="card-img-top">
+                {{ end }}
+                <div class="card-body  ps-4 pt-2 pb-2">
+                  <h3 class="h5 m-0">{{ title .Name }}</h3>
+                </div>
+              </div>
+          </a>
+        </div>
+      {{ end }}
+
+    </div>
+  </div>
+</div>
+{{ end }}

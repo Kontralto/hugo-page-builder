@@ -1,0 +1,40 @@
+{{ $headingTitle  := .headingTitle }}
+{{ $headingItem   := .headingItem }}
+{{ $headingPath   := .headingPath }}
+{{ $bodyData      := .bodyData }}
+{{ $parentID      := .accordionID }}
+
+{{ $headingID := print "id-" (partial "get/random-sha1" . ) }}
+{{ $bodyID    := print "id-" (partial "get/random-sha1" . ) }}
+
+<div class="accordion-item">
+            
+  <button class="accordion-button p-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{$bodyID}}" aria-expanded="false" aria-controls="{{$bodyID}}">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <h6 class="accordion-header" id="{{$headingID}}">
+            {{ $headingTitle }}
+        </h6>
+        </div>
+        <div class="col-4">
+          <span class="small">
+            {{ $headingItem }}
+          </span>
+        </h6>
+        </div>
+        <div class="col-4">
+          <span class="small">
+            {{ $headingPath }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </button>
+
+  <div id="{{$bodyID}}" class="accordion-collapse collapse" aria-labelledby="{{$headingID}}" data-bs-parent="#{{$parentID}}">
+    <div class="accordion-body">
+      {{ partial "dev/scratch/_table" $bodyData }}
+    </div>
+  </div>
+</div>
