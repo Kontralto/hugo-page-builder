@@ -11,13 +11,11 @@
 {{ end }}
 
 <!-- COMPONENT LAYOUT -->
-{{ if .Params.component}}
+{{ if .Params.component }}
   {{ $scratch.Set "layoutRequested" (fmt.Printf "%s.html" .Params.component) }}
   {{ $scratch.Set "layoutFileLocation" (fmt.Printf "/layouts/partials/%s.html" .Params.component) }}
-  {{ $scratch.Set "layoutRequestedExists" (fileExists ($scratch.Get "layoutFileLocation")) }}
 {{ else }}
-  {{ $scratch.Set "layoutRequested" "" }}
-  {{ $scratch.Set "layoutRequestedExists" false}}
+  {{ $scratch.Set "layoutRequested" "none" }}
 {{ end }}
 
 <!-- DRAFT NOTICE -->
