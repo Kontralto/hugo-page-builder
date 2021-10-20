@@ -1,7 +1,13 @@
 {{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
 {{ $path := "layouts/partials/components/list/icon-overview" }}
 {{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
-{{ $scratch := partial "dev/scratch/enrich/default-column-class" (dict "columnClass" "col-12 col-md-6 col-lg-3" "scratch" $scratch ) }}
+
+{{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+  "name" "columnClass"
+  "value" .Params.columnClass
+  "fallback" "col-12 col-md-6 col-lg-3"
+  "scratch" $scratch 
+) }}
 
 {{ $context := $scratch.Get "context" }}
 {{ $datasource := $scratch.Get "datasource" }}
