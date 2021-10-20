@@ -2,7 +2,6 @@ baseURL = "/"
 languageCode = "en-us"
 title = "Kontralto Technologies Inc"
 themesDir = "themes"
-theme = "hugo-page-builder"
 enableGitInfo = true
 
 [module]
