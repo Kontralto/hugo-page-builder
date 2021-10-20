@@ -1,0 +1,54 @@
+# GitLab CI configuration
+
+image:
+  name: jojomi/hugo
+
+stages:
+  - build
+  - publish
+
+dev_build:
+  stage: build
+  script:
+    - git submodule update --init
+    - hugo -D --environment develop
+  only:
+    - develop
+  artifacts:
+    paths:
+      - public/
+
+dev_publish:
+  stage: publish
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  dependencies:
+    - dev_build
+  script:
+    - aws s3 sync public s3://$BUCKET_NAME/
+    - aws cloudfront create-invalidation --distribution-id $DISTRO_ID --paths "/*"
+  only:
+    - develop
+
+prod_build:
+  stage: build
+  script:
+    - git submodule update --init
+    - hugo --environment production
+  only:
+    - main
+  artifacts:
+    paths:
+      - public/
+
+prod_publish:
+  stage: publish
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  dependencies:
+    - prod_build
+  script:
+    - export AWS_ACCESS_KEY_ID=$PROD_AWS_ACCESS_KEY_ID
+    - export AWS_SECRET_ACCESS_KEY=$PROD_AWS_SECRET_ACCESS_KEY
+    - aws s3 sync public s3://$PROD_BUCKET_NAME/
+    - aws cloudfront create-invalidation --distribution-id $PROD_DISTRO_ID --paths "/*"
+  only:
+    - main

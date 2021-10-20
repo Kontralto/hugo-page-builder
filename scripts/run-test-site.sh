@@ -1,0 +1,1 @@
+hugo server --buildDrafts --contentDir example-sites/test/content --config example-sites/test/config.toml --environment develop
