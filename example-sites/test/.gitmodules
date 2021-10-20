@@ -1,0 +1,3 @@
+[submodule "themes/hugo-page-builder"]
+	path = themes/hugo-page-builder
+	url = https://github.com/Kontralto/hugo-page-builder.git

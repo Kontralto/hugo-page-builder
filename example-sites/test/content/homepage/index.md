@@ -1,0 +1,4 @@
+---
+headless : true
+layout: empty
+---
