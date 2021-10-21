@@ -1,9 +1,9 @@
 ---
-title: 'About'
-date: 2018-12-06T09:29:16+10:00
+title: 'Single Item Components'
+heading: "Single Item Components"
+subheading: ""
+image: ''
+date: 2021-10-21T12:31:16-06:00
 draft: false
 layout: 
-heading: "Hello, it's a pleasure to meet you"
-subheading: "We're Kontralto, your tech-first cloud computing partner specializing in Amazon Web Services."
-image: 'https://source.unsplash.com/sO-JmQj95ec/1600x1000'
 ---

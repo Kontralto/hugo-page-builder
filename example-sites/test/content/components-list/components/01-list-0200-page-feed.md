@@ -1,5 +1,4 @@
 ---
-weight: 1
 datasource: "blog"
 component: "component/list/page-feed"
 type: component
