@@ -27,7 +27,23 @@
 
         {{ range ($scratch.Get "listItems") }}
           <div class="mb-1 {{ $scratch.Get "columnClass" }}">
-            {{ partial "element/summary/icon" . }}
+            {{ if and .Params.heading .Params.icon }}
+              <div class="element element-summary-icon">
+                  <div class="image">
+                    <img src="{{ .Site.BaseURL }}{{ .Params.icon }}"/>
+                  </div>
+                <div>
+                  <h3 class="heading">
+                    <a href="{{ .Permalink }}">{{ .Params.heading }}</a>
+                  </h3>
+                  {{ if .Params.subheading }}
+                    <p>
+                      {{ .Params.subheading }}
+                    </p>
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
           </div>
         {{ end }}
 
