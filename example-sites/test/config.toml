@@ -1,7 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "Kontralto Technologies Inc"
-themesDir = "themes"
+title = "Hugo Page Builder"
 enableGitInfo = true
 
 [module]
@@ -10,14 +9,14 @@ enableGitInfo = true
     min = "0.88.0"
 
 [params]
-  google_analytics_id="G-K7KTC07326"
+  google_analytics_id=""
 
   [params.meta]
-    title = "Kontralto Technologies"
-    description = "Your DevOps and Cloud Native partner."
+    title = "Hugo Page Builder - Test Site"
+    description = "Placeholder content for expeditious theme development"
     type = "website"
-    url = "kontralto.com"
-    image = "kontralto.com/images/logo.png"
+    url = "example.com"
+    image = "/images/logo.png"
     twitter_card = "summary"
     twitter_site = ""
     twitter_creator = ""
@@ -28,26 +27,21 @@ enableGitInfo = true
     show_hints = false
 
 [[menu.main]]
-    name = "Services"
-    url = "/services/"
+    name = "Single"
+    url = "/components-single/"
     weight = 1
 
 [[menu.main]]
-    name = "About"
-    url = "/about/"
+    name = "List"
+    url = "/components-list/"
+    weight = 2
+
+[[menu.main]]
+    name = "Taxonomy"
+    url = "/tags/"
     weight = 3
 
-[[menu.main]]
-    name = "Blog"
-    url = "/blog/"
-    weight = 4
-
-[[menu.main]]
-    name = "Contact"
-    url = "/contact/"
-    weight = 5
-
 [permalinks]
-  blog = "/blog/:slug/"
 
 [taxonomies]
+  tag = 'tags'
