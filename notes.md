@@ -1,5 +1,13 @@
 # Notes
 
+## who is this theme for?
+* someone who knows (or is willing to learn)
+  * Git version control
+  * Hugo static site generator
+  * an IDE or other capable text editor
+  * how to run commands in the command line
+  * how to read error messages in the command line
+
 ## goals
 * more robust use of Hugo errors and warnings
   * less bubble-wrapping misconfigurations [highest priority]
