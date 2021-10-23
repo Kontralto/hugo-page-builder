@@ -1,0 +1,60 @@
+{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
+{{ $path := "layout/component/banner/hero-standard" }}
+{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+
+{{ $componentName := "example" }}
+{{ $anchor := "anchorValue" }}
+{{ $requiredFields := (slice "heading") }}
+{{ $classPadding := "py-4" }}
+{{ $classMargin := "" }}
+{{ $classCustom := "hero-image" }}
+{{ $classBg := "bg-primary" }}
+{{ $classText := "text-white" }}
+
+{{ $context := $scratch.Get "context" }}
+{{ $datasource := $scratch.Get "datasource" }}
+
+<!--
+  input validation
+-->
+{{ range $requiredFields }}
+  {{ if not (isset $datasource.Params .) }}
+    {{ errorf "Required param %q not set on %q" . $datasource.Path}}
+  {{ end }}
+{{ end }}
+
+<div id="{{ $anchor }}" class="wrapper">
+
+  <!-- scratch display -->
+  {{ partial "dev/scratch/display" $scratch }}
+
+  <!-- draft notice -->
+  {{ if $scratch.Get "draftNoticeActive" }}
+  <div class="is-draft">
+    <div class="draft-notice pt-2 pb-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            This component is a draft
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
+  <!-- component -->
+  {{ with $datasource }}
+  <div class="component component-{{ $componentName }} {{ $classCustom}} {{ $classBg }} {{ $classText }} {{ $classMargin }}  {{ $classPadding }}" style="background-image: url('{{ .Params.image | relURL }}')">
+    <div class="container ">
+      <div class="text text-white">
+        <h1>{{ .Params.heading }}</h1>
+        {{ if .Params.subheading }}
+          <h2 class="h3">{{ .Params.subheading }}</h2>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+
+</div>
