@@ -1,0 +1,21 @@
+{{ $scratch := . }}
+{{ $scratch := partial "component/defaults.html" $scratch }}
+{{ $datasource := $scratch.Get "datasource"}}
+
+<div id='{{ $scratch.Get "anchor" }}' class="component-wrapper">
+
+  {{ partial "dev/scratch/display" $scratch }}
+
+  {{ if $scratch.Get "draftNoticeActive" }}
+    {{ partial "dev/wrapper/_draft" "This component is a draft"}}
+  {{ end }}
+
+  <div  class='component component-{{ $scratch.Get "componentName" }} 
+              {{ $scratch.Get "classCustom" }}
+              {{ $scratch.Get "classBgColor" }}
+              {{ $scratch.Get "classTextColor" }}
+              {{ $scratch.Get "classMargin" }}
+              {{ $scratch.Get "classPadding" }}'
+        style="background-image: url('{{ $datasource.Params.image | relURL }}')">
+
+<!-- closing div comes from wrapper/bottom -->

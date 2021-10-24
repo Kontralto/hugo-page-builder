@@ -5,50 +5,17 @@
   "requiredParams" (slice "heading")
 ) }}
 
-{{ $scratch := partial "component/test.defaults.html" $scratch }}
-{{ $componentName := $scratch.Get "componentName" }}
-{{ $anchor := $scratch.Get "anchor" }}
-{{ $classPadding := $scratch.Get "classPadding" }}
-{{ $classMargin := $scratch.Get "classMargin" }}
-{{ $classCustom := $scratch.Get "classCustom" }}
-{{ $classBg := $scratch.Get "classBgColor" }}
-{{ $classText := $scratch.Get "classTextColor" }}
+{{ partial "dev/wrapper/component-v2" $scratch }}
 
-{{ $context := $scratch.Get "context" }}
-{{ $datasource := $scratch.Get "datasource" }}
-
-<div id="{{ $anchor }}" class="component-wrapper">
-
-  <!-- scratch display -->
-  {{ partial "dev/scratch/display" $scratch }}
-
-  <!-- draft notice -->
-  {{ if $scratch.Get "draftNoticeActive" }}
-  <div class="is-draft">
-    <div class="draft-notice pt-2 pb-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            This component is a draft
-          </div>
-        </div>
-      </div>
+{{ with $scratch.Get "datasource" }}
+  <div class="container">
+    <div class="text">
+      <h1>{{ .Params.heading }}</h1>
+      {{ if .Params.subheading }}
+        <h2 class="h3">{{ .Params.subheading }}</h2>
+      {{ end }}
     </div>
   </div>
-  {{ end }}
+{{ end }}
 
-  <!-- component -->
-  {{ with $datasource }}
-  <div class="component component-{{ $componentName }} {{ $classCustom }} {{ $classBg }} {{ $classText }} {{ $classMargin }} {{ $classPadding }}" style="background-image: url('{{ .Params.image | relURL }}')">
-    <div class="container ">
-      <div class="text">
-        <h1>{{ .Params.heading }}</h1>
-        {{ if .Params.subheading }}
-          <h2 class="h3">{{ .Params.subheading }}</h2>
-        {{ end }}
-      </div>
-    </div>
-  </div>
-  {{ end }}
-
-</div>
+{{ partial "dev/wrapper/bottom-v2" $scratch }}

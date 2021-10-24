@@ -1,8 +1,6 @@
 {{ $scratch := . }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ $classBg := "bg-primary" }}
-  {{ $classText := "text-white" }}
 
   {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
     "name" "anchor"
