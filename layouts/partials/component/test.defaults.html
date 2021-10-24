@@ -1,0 +1,51 @@
+{{ $scratch := . }}
+
+{{ with $scratch.Get "datasource" }}
+  {{ $classBg := "bg-primary" }}
+  {{ $classText := "text-white" }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "anchor"
+    "value" .Params.anchor
+    "fallback" (partial "get/random-sha1" .)
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classPadding"
+    "value" .Params.classPadding
+    "fallback" "py-4"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classMargin"
+    "value" .Params.classMargin
+    "fallback" "my-0"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classCustom"
+    "value" .Params.classCustom
+    "fallback" ""
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classBgColor"
+    "value" .Params.classBgColor
+    "fallback" "bg-primary"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classTextColor"
+    "value" .Params.classTextColor
+    "fallback" "text-white"
+    "scratch" $scratch 
+  ) }}
+
+{{ end }}
+
+{{ return $scratch }}

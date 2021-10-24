@@ -1,29 +1,23 @@
-{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layout/component/banner/hero-standard" }}
-{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "component/banner/hero-standard"
+  "name" "test"
+  "requiredParams" (slice "heading")
+) }}
 
-{{ $componentName := "example" }}
-{{ $anchor := "anchorValue" }}
-{{ $requiredFields := (slice "heading") }}
-{{ $classPadding := "py-4" }}
-{{ $classMargin := "" }}
-{{ $classCustom := "hero-image" }}
-{{ $classBg := "bg-primary" }}
-{{ $classText := "text-white" }}
+{{ $scratch := partial "component/test.defaults.html" $scratch }}
+{{ $componentName := $scratch.Get "componentName" }}
+{{ $anchor := $scratch.Get "anchor" }}
+{{ $classPadding := $scratch.Get "classPadding" }}
+{{ $classMargin := $scratch.Get "classMargin" }}
+{{ $classCustom := $scratch.Get "classCustom" }}
+{{ $classBg := $scratch.Get "classBgColor" }}
+{{ $classText := $scratch.Get "classTextColor" }}
 
 {{ $context := $scratch.Get "context" }}
 {{ $datasource := $scratch.Get "datasource" }}
 
-<!--
-  input validation
--->
-{{ range $requiredFields }}
-  {{ if not (isset $datasource.Params .) }}
-    {{ errorf "Required param %q not set on %q" . $datasource.Path}}
-  {{ end }}
-{{ end }}
-
-<div id="{{ $anchor }}" class="wrapper">
+<div id="{{ $anchor }}" class="component-wrapper">
 
   <!-- scratch display -->
   {{ partial "dev/scratch/display" $scratch }}
@@ -45,9 +39,9 @@
 
   <!-- component -->
   {{ with $datasource }}
-  <div class="component component-{{ $componentName }} {{ $classCustom}} {{ $classBg }} {{ $classText }} {{ $classMargin }}  {{ $classPadding }}" style="background-image: url('{{ .Params.image | relURL }}')">
+  <div class="component component-{{ $componentName }} {{ $classCustom }} {{ $classBg }} {{ $classText }} {{ $classMargin }} {{ $classPadding }}" style="background-image: url('{{ .Params.image | relURL }}')">
     <div class="container ">
-      <div class="text text-white">
+      <div class="text">
         <h1>{{ .Params.heading }}</h1>
         {{ if .Params.subheading }}
           <h2 class="h3">{{ .Params.subheading }}</h2>
