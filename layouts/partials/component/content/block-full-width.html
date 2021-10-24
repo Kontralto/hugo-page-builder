@@ -6,12 +6,20 @@
 
 {{ with $datasource }}
 {{ partial "dev/wrapper/component" $scratch }}
-  {{ if or .Content .Params.heading .Params.subheading }}
+  {{ if .Content }}
     <div class="component component-content-block-full-width bg-primary text-white">
       <div class="container pt-6 pb-6 pt-md-10 pb-md-10">
         <div class="row">
           <div class="col-12">
-            {{ partial "element/summary/basic" . }}
+            {{ if .Params.heading }}
+              <h2 class="heading">{{ .Params.heading }}</h2>
+            {{ end }}
+            {{ if .Params.subheading }}
+              <h3 class="h5 subheading mt-2">{{ .Params.subheading }}</h2>
+            {{ end }}
+              <div class="mt-4">
+                {{ .Content }}
+              </div>
           </div>
         </div>
       </div>

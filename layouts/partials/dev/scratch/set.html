@@ -1,0 +1,123 @@
+<!-- ---------------- -->
+<!-- CHECK ARGS -->
+{{ $args := (slice "context" "layoutPath" "name" "requiredParams") }}
+{{ $input := . }}
+{{ range $arg := $args }}
+  {{ if not (isset $input $arg) }}
+    {{ errorf "Component enrichment is missing arg %q" $arg }}
+  {{ end }}
+{{ end }}
+<!-- TODO: check if required params is a slice -->
+<!-- TODO: check if context is a page/section/node/whatever is appropriate-->
+
+
+<!-- ---------------- -->
+<!-- SET SCRATCH -->
+{{ $scratch := newScratch }}
+{{ $scratch := partial "dev/scratch/enrich/site-config" $scratch }}
+{{ $scratch.Set "context" .context }}
+{{ $scratch := partial "dev/scratch/enrich/datasource" $scratch }}
+{{ $scratch.Set "layoutActive" (printf "/layouts/partials/%s" .layoutPath)}}
+{{ $scratch.Set "componentName" .name}}
+
+<!-- component input validation -->
+{{ range .requiredParams }}
+  {{ if not (isset ($scratch.Get "datasource").Params .) }}
+    {{ errorf "Required param %q not set on %q" . ($scratch.Get "datasource").Path}}
+  {{ end }}
+{{ end }}
+
+{{ with .context }}
+  <!-- COMPONENT DIRECTORY  -->
+  {{ if isset .Params "componentdirectory" }}
+    {{ $scratch.Set "componentDirectory" .Params.componentDirectory }}
+  {{ else }}
+    {{ $scratch.Set "componentDirectory" "components" }}
+  {{ end }}
+
+  <!-- COMPONENT LAYOUT -->
+  {{ if .Params.component}}
+    {{ $scratch.Set "layoutRequested" (fmt.Printf "%s.html" .Params.component) }}
+    {{ $scratch.Set "layoutFileLocation" (fmt.Printf "/layouts/partials/%s.html" .Params.component) }}
+    {{ $scratch.Set "layoutRequestedExists" (fileExists ($scratch.Get "layoutFileLocation")) }}
+  {{ else }}
+    {{ $scratch.Set "layoutRequested" "" }}
+    {{ $scratch.Set "layoutRequestedExists" false}}
+  {{ end }}
+
+  <!-- DRAFT NOTICE -->
+  {{ $scratch.Set "draftNoticeActive" (and ($scratch.Get "draftNoticeEnabled") .Draft)}}
+
+  
+  <!-- LIST ROOT -->
+  {{ $scratch.Set "hasListRoot" false }}
+  <!-- frontmatter -->
+  {{ if ( isset . "Params.listRoot" ) }}  
+    {{ $listRoot := site.GetPage .Params.listRoot  }}
+    {{ $scratch.Set "listRoot" $listRoot }}
+    {{ $scratch.Set "hasListRoot" true }}
+  <!-- partial with dict -->
+  {{ else if ( isset . "listRoot" ) }}
+    <!-- item -->
+    {{ if (or .listRoot.IsNode .listRoot.IsPage .listRoot.IsSection ) }}
+      {{ $scratch.Set "listRoot" .listRoot }}
+      {{ $scratch.Set "hasDatasource" true }}
+    <!-- path -->
+    {{ else }}
+      {{ $listRoot := site.GetPage .listRoot  }}
+      {{ $scratch.Set "listRoot" $listRoot }}
+      {{ $scratch.Set "hasListRoot" true }}
+    {{ end }}
+  <!-- fall back to datasource -->
+  {{ else if $scratch.Get "hasDatasource" }}
+    {{ $scratch.Set "listRoot" ($scratch.Get "datasource") }}
+    {{ $scratch.Set "hasListRoot" true }}
+  {{ end }}
+  <!-- /LIST ROOT -->
+
+  <!-- LIST ITEMS -->
+  {{ $scratch.Set "hasListItems" false }}
+
+  {{ if $scratch.Get "hasListRoot" }}
+    {{ $listItems := ($scratch.Get "listRoot").Pages }}
+    {{ $scratch.Set "listItems" $listItems }}
+    {{ if gt (len ($scratch.Get "listItems")) 0 }}
+      {{ $scratch.Set "hasListItems" true }}
+    {{ end }}
+  {{ end }}
+
+  <!-- TODO run the list through a list modifier engine if specified -->
+  <!-- 
+  # consider frontmatter such that
+  queryEnhancer
+    - filter/featured
+    - filter/by-date-descending
+    - filter/take-6
+  -->
+
+  <!-- 
+
+  {{ range .Params.queryEnhancer }}
+    {{ $scratch.Set "listItems" (partial (.) ($scratch.Get "listItems") )}}
+  {{ end }}
+
+  -->
+
+  <!-- /LIST ITEMS -->
+
+  {{ if isset .Params "ctahide"}}
+    {{ $scratch.Set "ctaHide" .Params.ctaHide }}
+  {{ else }}
+    {{ $scratch.Set "ctaHide" false }}
+  {{ end }}
+
+  {{ if isset .Params "columnclass"}}
+    {{ $scratch.Set "columnClass" .Params.columnclass }}
+  {{ end }}
+
+{{ end }}
+<!-- /with context -->
+
+
+
+{{ return $scratch }}

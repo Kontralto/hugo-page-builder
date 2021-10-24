@@ -1,0 +1,21 @@
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "component/banner/hero-standard"
+  "name" "test"
+  "requiredParams" (slice "heading")
+) }}
+
+{{ partial "dev/wrapper/component-v2" $scratch }}
+
+{{ with $scratch.Get "datasource" }}
+  <div class="container">
+    <div class="text">
+      <h1>{{ .Params.heading }}</h1>
+      {{ if .Params.subheading }}
+        <h2 class="h3">{{ .Params.subheading }}</h2>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}

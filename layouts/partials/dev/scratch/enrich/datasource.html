@@ -1,0 +1,27 @@
+{{ $scratch := . }}
+
+{{ with $scratch.Get "context" }}
+  {{ $scratch.Set "hasDatasource" false }}
+  <!-- frontmatter -->
+  {{ if ( isset .Params "datasource" ) }}
+    {{ $datasource := site.GetPage .Params.datasource  }}
+    {{ $scratch.Set "datasource" $datasource }}
+    {{ $scratch.Set "hasDatasource" true }}
+  <!-- partial with dict -->
+  {{ else if ( isset . "datasource" ) }}
+    <!-- item -->
+    {{ if (or .datasource.IsNode .datasource.IsPage .datasource.IsSection ) }}
+      {{ $scratch.Set "datasource" .datasource }}
+      {{ $scratch.Set "hasDatasource" true }}
+    <!-- path -->
+    {{ else }}
+      {{ $scratch.Set "datasource" site.GetPage .datasource }}
+      {{ $scratch.Set "hasDatasource" true }}
+    {{ end }}
+  {{ else if or .IsPage .IsSection .IsNode }}
+    {{ $scratch.Set "datasource" . }}
+    {{ $scratch.Set "hasDatasource" true }}
+  {{ end }}
+{{ end }}
+
+{{ return $scratch }}

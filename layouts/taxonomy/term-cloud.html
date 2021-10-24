@@ -1,5 +1,11 @@
 {{ $scratch := partial "dev/scratch/set-for-item-context" . }}
-{{ $scratch := partial "dev/scratch/enrich/default-column-class" (dict "columnClass" "col-12 col-md-4" "scratch" $scratch ) }}
+
+{{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+  "name" "columnClass"
+  "value" .Params.columnClass
+  "fallback" "col-12 col-md-4"
+  "scratch" $scratch 
+) }}
 
 {{ $context := $scratch.Get "context" }}
 {{ $colClass := $scratch.Get "columnClass" }}

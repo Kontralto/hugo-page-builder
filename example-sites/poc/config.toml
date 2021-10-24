@@ -22,9 +22,9 @@ enableGitInfo = true
     twitter_creator = ""
 
   [params.debug]
-    print_scratch = false
+    print_scratch = true
     show_drafts = true
-    show_hints = false
+    show_hints = true
 
 [[menu.main]]
     name = "Single"
