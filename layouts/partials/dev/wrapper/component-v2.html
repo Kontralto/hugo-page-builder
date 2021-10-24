@@ -1,6 +1,7 @@
 {{ $scratch := . }}
 {{ $scratch := partial "component/defaults.html" $scratch }}
 {{ $datasource := $scratch.Get "datasource"}}
+{{ $bgPosition := $scratch.Get "backgroundPosition"}}
 
 <div id='{{ $scratch.Get "anchor" }}' class="component-wrapper">
 
@@ -16,6 +17,7 @@
               {{ $scratch.Get "classTextColor" }}
               {{ $scratch.Get "classMargin" }}
               {{ $scratch.Get "classPadding" }}'
-        style="background-image: url('{{ $datasource.Params.image | relURL }}')">
+        style=" background-position: {{ $bgPosition }};
+                background-image: url('{{ $datasource.Params.image | relURL }}')">
 
 <!-- closing div comes from wrapper/bottom -->

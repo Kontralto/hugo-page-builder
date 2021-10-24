@@ -44,6 +44,13 @@
     "scratch" $scratch 
   ) }}
 
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "backgroundPosition"
+    "value" .Params.backgroundPosition
+    "fallback" "0% 0%"
+    "scratch" $scratch 
+  ) }}
+
 {{ end }}
 
 {{ return $scratch }}
