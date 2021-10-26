@@ -1,0 +1,11 @@
+.component {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light;
+  position: relative;
+
+  &.constrained-width {
+    @extend .container;
+    @extend .px-0;
+  }
+}
