@@ -1,27 +1,17 @@
-{{ $localScratch := newScratch }}
-
-{{ if not (isset . "name") }}
-  {{ errorf "partial get/default-value is missing parameter 'name'" }}
+<!-- CHECK ARGS -->
+{{ $args := (slice "name" "fallback" "value" "scratch") }}
+{{ $input := . }}
+{{ range $arg := $args }}
+  {{ if not (isset $input $arg) }}
+    {{ errorf "partial get/default-value is missing argument %q" $arg }}
+  {{ end }}
 {{ end }}
 
-{{ if not (isset . "fallback") }}
-  {{ errorf "partial get/default-value is missing parameter 'fallback'" }}
-{{ end }}
-
-{{ if not (isset . "value") }}
-  {{ errorf "partial get/default-value is missing parameter 'provided'" }}
-{{ end }}
-
-{{ if not (isset . "scratch") }}
-  {{ errorf "partial get/default-value is missing parameter 'scratch'" }}
-{{ end }}
-
-{{ if not .value }}
-  {{ $localScratch.Set "result" .fallback }}
+<!-- SET SCRATCH -->
+{{ if .value }}
+  {{ .scratch.Set .name .value }}
 {{ else }}
-  {{ $localScratch.Set "result" .value }}
+  {{ .scratch.Set .name .fallback }}
 {{ end }}
-
-{{ .scratch.Set .name ($localScratch.Get "result") }}
 
 {{ return .scratch }}
