@@ -21,6 +21,9 @@
 {{ $scratch.Set "componentName" .name}}
 {{ $scratch.Set "classAdditional" .classAdditional }}
 
+<!-- set component defaults -->
+{{ $scratch := partial "component/defaults.html" $scratch }}
+
 <!-- component input validation -->
 {{ range .requiredParams }}
   {{ if not (isset ($scratch.Get "datasource").Params .) }}
