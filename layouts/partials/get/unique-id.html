@@ -1,0 +1,4 @@
+{{ $length := 8 }}
+{{ $shortID := substr (partial "get/random-sha1" . ) 0 $length }}
+
+{{ return printf "id-%s" $shortID }}
