@@ -1,0 +1,27 @@
+{{ $scratch := . }}
+
+{{ with $scratch.Get "datasource" }}
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classPadding"
+    "value" .Params.classPadding
+    "fallback" "pt-6 pb-2 pt-md-10"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classBgColor"
+    "value" .Params.classBgColor
+    "fallback" "bg-white"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classTextColor"
+    "value" .Params.classTextColor
+    "fallback" "text-primary"
+    "scratch" $scratch 
+  ) }}
+
+{{ end }}
+
+{{ return $scratch }}
