@@ -105,12 +105,18 @@
 
   <!-- /LIST ITEMS -->
 
+  {{ if and (isset .Params "constrainedwidth") .Params.constrainedwidth }}
+    {{ $scratch.Set "classConstrainedWidth" "constrained-width" }}
+  {{ end }}
+
+  {{/*  TODO: REMOVE  */}}
   {{ if isset .Params "ctahide"}}
     {{ $scratch.Set "ctaHide" .Params.ctaHide }}
   {{ else }}
     {{ $scratch.Set "ctaHide" false }}
   {{ end }}
 
+  {{/*  TODO: REMOVE  */}}
   {{ if isset .Params "columnclass"}}
     {{ $scratch.Set "columnClass" .Params.columnclass }}
   {{ end }}
