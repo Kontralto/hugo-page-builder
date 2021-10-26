@@ -19,6 +19,7 @@
 {{ $scratch := partial "dev/scratch/enrich/datasource" $scratch }}
 {{ $scratch.Set "layoutActive" (printf "/layouts/partials/%s" .layoutPath)}}
 {{ $scratch.Set "componentName" .name}}
+{{ $scratch.Set "classAdditional" .classAdditional }}
 
 <!-- component input validation -->
 {{ range .requiredParams }}
