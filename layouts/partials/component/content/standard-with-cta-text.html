@@ -1,27 +1,28 @@
-{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layout/component/content/standard-with-cta" }}
-{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "content/standard-with-cta"
+  "name" "content-standard-with-cta"
+  "classAdditional" ""
+  "requiredParams" (slice )
+  "contentRequired" true
+) }}
+
+{{ partial "dev/wrapper/component-v2" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ partial "dev/wrapper/component" $scratch }}
-    {{ if .Content }}
-    <div class="component component-content-standard">
-      <div class="container pt-2 pb-2">
-        <div class="row justify-content-start">
-          <div class="col-12 col-md-8">
-            <div class="content">
-              {{ .Content }}
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-12 col-md-8">
+      <div class="content">
+        {{ .Content }}
 
-              {{ if .Params.ctaText }}
-                <br>
-                <p class="lead">{{ .Params.ctaText }}.</p>
-              {{ end }}</div>
-          </div>
-        </div>
-      </div>
+        {{ if .Params.ctaText }}
+          <br>
+          <p class="lead">{{ .Params.ctaText }}.</p>
+        {{ end }}</div>
     </div>
-    {{ else }}
-      {{ partial "component/hint/no-content" $scratch }}
-    {{ end }}
-  {{ partial "dev/wrapper/bottom" $scratch }}
+  </div>
+</div>
 {{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}
