@@ -1,8 +1,5 @@
 .component {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-blend-mode: soft-light;
-  position: relative;
+  @extend .bg-image-default-settings;
 
   &.constrained-width {
     @extend .container;
