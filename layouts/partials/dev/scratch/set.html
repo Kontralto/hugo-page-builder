@@ -31,6 +31,10 @@
   {{ end }}
 {{ end }}
 
+{{ if and .contentRequired (not .context.Content) }}
+  {{ errorf "Content is required for %q but not set on %q" ($scratch.Get "layoutActive") ($scratch.Get "datasource").Path}}
+{{ end }}
+
 {{ with .context }}
   <!-- COMPONENT DIRECTORY  -->
   {{ if isset .Params "componentdirectory" }}
