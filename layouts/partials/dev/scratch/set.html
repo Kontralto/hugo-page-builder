@@ -113,7 +113,7 @@
 
   <!-- /LIST ITEMS -->
 
-  {{ if and (isset .Params "constrainedwidth") .Params.constrainedwidth }}
+  {{ if .Params.constrainedWidth }}
     {{ $scratch.Set "classConstrainedWidth" "constrained-width" }}
   {{ end }}
 
