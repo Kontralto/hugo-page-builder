@@ -3,13 +3,6 @@
 {{ with $scratch.Get "datasource" }}
 
   {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
-    "name" "anchor"
-    "value" .Params.anchor
-    "fallback" (partial "get/random-sha1" .)
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
     "name" "classPadding"
     "value" .Params.classPadding
     "fallback" "py-4"
