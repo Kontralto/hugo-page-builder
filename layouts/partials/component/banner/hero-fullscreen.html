@@ -7,6 +7,7 @@
 ) }}
 
 {{ $scrollAnchor := partial "get/unique-id" . }}
+{{ $scratch := partial "component/banner/hero.defaults.html" $scratch }}
 
 {{ partial "dev/wrapper/component-v2" $scratch }}
 

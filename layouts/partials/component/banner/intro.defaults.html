@@ -9,13 +9,6 @@
   ) }}
 
   {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
-    "name" "classBgColor"
-    "value" .Params.classBgColor
-    "fallback" "bg-white"
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
     "name" "classTextColor"
     "value" .Params.classTextColor
     "fallback" "text-primary"
