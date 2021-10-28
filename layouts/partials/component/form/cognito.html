@@ -1,24 +1,26 @@
-{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layout/component/form/cognito" }}
-{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "form/cognito"
+  "name" "form-cognito"
+  "classAdditional" ""
+  "requiredParams" (slice "cognito_account" "cognito_form_id")
+) }}
+
+{{ partial "dev/wrapper/component-v2" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ partial "dev/wrapper/component" $scratch }}
-    {{ if and .Params.cognito_account .Params.cognito_form_id }}
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-8">
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8">
 
-          <div class="cognito">
-            <script src="https://www.cognitoforms.com/s/{{ .Params.cognito_account}}"></script>
-            <script>Cognito.load("forms", { id: "{{ .Params.cognito_form_id }}" });</script>
-          </div>
-
-        </div>
+      <div class="cognito">
+        <script src="https://www.cognitoforms.com/s/{{ .Params.cognito_account}}"></script>
+        <script>Cognito.load("forms", { id: "{{ .Params.cognito_form_id }}" });</script>
       </div>
+
     </div>
-    {{ else }}
-      {{ partial "component/hint/no-content" $scratch }}
-    {{ end }}
-  {{ partial "dev/wrapper/bottom" $scratch }}
+  </div>
+</div>
 {{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}
