@@ -47,7 +47,7 @@
 
       {{ block "content" . }}
         {{ if partial "if/show-block" (dict "block" "content" "page" .) }}
-          {{ partial "component/content/block" . }}
+          {{ partial "component/content/rich-text" . }}
         {{ end }}
       {{ end }}
 

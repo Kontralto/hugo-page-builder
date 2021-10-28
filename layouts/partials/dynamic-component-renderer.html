@@ -4,5 +4,5 @@
   {{ partial .Params.component . }}
 {{ else }}
   {{ warnf "%q is missing .Params.component. Falling back to content/block" .Path }}
-  {{ partial "component/content/block" . }}
+  {{ partial "component/content/rich-text" . }}
 {{ end }}
