@@ -60,7 +60,7 @@
   <!-- LIST ROOT -->
   {{ $scratch.Set "hasListRoot" false }}
   <!-- frontmatter -->
-  {{ if ( isset . "Params.listRoot" ) }}  
+  {{ if ( isset .Params "listroot" ) }}  
     {{ $listRoot := site.GetPage .Params.listRoot  }}
     {{ $scratch.Set "listRoot" $listRoot }}
     {{ $scratch.Set "hasListRoot" true }}
