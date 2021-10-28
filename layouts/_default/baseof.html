@@ -41,13 +41,13 @@
 
       {{ block "banner" . }}
         {{ if partial "if/show-block" (dict "block" "banner" "page" .) }}
-          {{ partial "component/banner/hero-standard-no-wrap" . }}
+          {{ partial "component/banner/hero-standard" . }}
         {{ end }}
       {{ end }}
 
       {{ block "content" . }}
         {{ if partial "if/show-block" (dict "block" "content" "page" .) }}
-          {{ partial "component/content/standard-no-wrap" . }}
+          {{ partial "component/content/block" . }}
         {{ end }}
       {{ end }}
 
