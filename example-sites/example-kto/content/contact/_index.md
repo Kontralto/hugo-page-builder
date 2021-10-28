@@ -10,9 +10,12 @@ meta:
     Our talented DevOps specialists optimize cloud properties and create scalable, efficient software to meet your business needs.
 
     We offer a free consultation for all new clients. Want to turn your dream projects into a reality?
+hideblock:
+- banner
+- content
+- contact
 ---
 
 Our talented DevOps specialists optimize cloud properties and create scalable, efficient software to meet your business needs.
 
 We offer a free consultation for all new clients. Want to turn your dream projects into a reality?
-
