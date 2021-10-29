@@ -11,6 +11,12 @@
     (site.Params.debug.show_drafts)
   )
 }}
+{{ .Set "hotEditEnabled" 
+  (and 
+    (.Get "isDevEnv")
+    (site.Params.debug.enable_hot_edit)
+  )
+}}
 {{ .Set "analyticsEnabled"
   (and
     (not site.IsServer)

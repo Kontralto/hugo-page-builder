@@ -24,22 +24,27 @@ enableGitInfo = true
   [params.debug]
     print_scratch = false
     show_drafts = true
-    show_hints = false
+    enable_hot_edit = false
+
+[[menu.main]]
+    name = "Wrapper"
+    url = "/component-wrapper/"
+    weight = 1
 
 [[menu.main]]
     name = "Single"
     url = "/components-single/"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     name = "List"
     url = "/components-list/"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     name = "Taxonomy"
     url = "/tags/"
-    weight = 3
+    weight = 4
 
 [permalinks]
 

@@ -25,7 +25,7 @@ enableGitInfo = true
   [params.debug]
     print_scratch = false
     show_drafts = false
-    enable_browser_edit = true
+    enable_hot_edit = true
 
 [[menu.main]]
     name = "Services"
