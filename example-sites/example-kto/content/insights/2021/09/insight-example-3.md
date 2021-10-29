@@ -1,17 +1,12 @@
 ---
-title: Why You Should Use OAI On Your Static Site's S3 Bucket
-heading: Why You Should Use OAI On Your Static Site's S3 Bucket
-subheading: Save money and reduce risk
+title: INSIGHT How To Set Up CI/CD for Serverless APIs
+heading: INSIGHT How To Set Up CI/CD for Serverless APIs
+subheading: Use declarative pipelines and infrastructure as code
 date: 2021-09-02T11:39:49+02:00
 tags:
+  - cloud native development
+  - CI/CD
   - devops
-  - cost control
-  - security
-  - cloudfront
-  - OAI
-  - Lambda@Edge
-  - static site
-featured: true
 categories:
   - tools
 draft: true

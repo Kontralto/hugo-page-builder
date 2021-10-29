@@ -1,6 +1,6 @@
 ---
-title: Why You Should Use OAI On Your Static Site's S3 Bucket
-heading: Why You Should Use OAI On Your Static Site's S3 Bucket
+title: INSIGHT Why You Should Use OAI On Your Static Site's S3 Bucket
+heading: INSIGHT Why You Should Use OAI On Your Static Site's S3 Bucket
 subheading: Save money and reduce risk
 date: 2021-09-02T11:39:49+02:00
 tags:
@@ -11,7 +11,7 @@ tags:
   - OAI
   - Lambda@Edge
   - static site
-featured: true
+  
 categories:
   - tools
 draft: true

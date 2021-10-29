@@ -1,21 +1,21 @@
 ---
-title: Why You Should Use OAI On Your Static Site's S3 Bucket
-heading: Why You Should Use OAI On Your Static Site's S3 Bucket
-subheading: Save money and reduce risk
-date: 2021-09-02T11:39:49+02:00
+title: INSIGHT Prepare Your Application for Horizontal Autoscaling to Save Money
+heading: INSIGHT Prepare Your Application for Horizontal Autoscaling to Save Money
+subheading: Autoscaling means never paying for idle compute again
+date: 2021-08-01T11:39:49+02:00
 tags:
-  - devops
+  - autoscaling
   - cost control
-  - security
-  - cloudfront
-  - OAI
-  - Lambda@Edge
-  - static site
-featured: true
+  - EC2
+  - ECS
+  - EKS
+  - Kubernetes
+  - Docker
 categories:
   - tools
 draft: true
 ---
+
 
 Aliquam erat volutpat. Nunc eleifend leo vitae magna. In id erat non orci
 commodo lobortis. Proin neque massa, cursus ut, gravida ut, lobortis eget,

@@ -1,17 +1,13 @@
 ---
-title: Why You Should Use OAI On Your Static Site's S3 Bucket
-heading: Why You Should Use OAI On Your Static Site's S3 Bucket
-subheading: Save money and reduce risk
+title: INSIGHT Save Money and Time Writing Serverless APIs With This Framework
+heading: INSIGHT Save Money and Time Writing Serverless APIs With This Framework
+subheading: We've open-sourced the powerful tool we built to get work done faster
 date: 2021-09-02T11:39:49+02:00
 tags:
-  - devops
-  - cost control
-  - security
-  - cloudfront
-  - OAI
-  - Lambda@Edge
-  - static site
-featured: true
+  - cloud native development
+  - API Gateway
+  - Lambda
+  - serverless
 categories:
   - tools
 draft: true

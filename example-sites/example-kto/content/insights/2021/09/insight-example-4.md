@@ -1,17 +1,13 @@
 ---
-title: Why You Should Use OAI On Your Static Site's S3 Bucket
-heading: Why You Should Use OAI On Your Static Site's S3 Bucket
-subheading: Save money and reduce risk
+title: INSIGHT The Most Effective Baseline Security Rules in AWS Cloud
+heading: INSIGHT The Most Effective Baseline Security Rules in AWS Cloud
+subheading: Protect your cloud with sensible policies from the start
 date: 2021-09-02T11:39:49+02:00
 tags:
-  - devops
-  - cost control
   - security
-  - cloudfront
-  - OAI
-  - Lambda@Edge
-  - static site
-featured: true
+  - monitoring
+  - IAM
+  - devops
 categories:
   - tools
 draft: true

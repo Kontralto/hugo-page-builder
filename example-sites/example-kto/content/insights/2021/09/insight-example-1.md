@@ -1,21 +1,16 @@
 ---
-title: Why You Should Use OAI On Your Static Site's S3 Bucket
-heading: Why You Should Use OAI On Your Static Site's S3 Bucket
-subheading: Save money and reduce risk
-date: 2021-09-02T11:39:49+02:00
+title: INSIGHT How To Add Role Based Access Control to Cognito
+heading: INSIGHT How To Add Role Based Access Control to Cognito
+subheading: You can write it yourself, or use our solution
+date: 2021-09-01T11:39:49+02:00
 tags:
-  - devops
-  - cost control
-  - security
-  - cloudfront
-  - OAI
-  - Lambda@Edge
-  - static site
-featured: true
+  - role based access control
+  - Cognito
 categories:
   - tools
 draft: true
 ---
+
 
 Aliquam erat volutpat. Nunc eleifend leo vitae magna. In id erat non orci
 commodo lobortis. Proin neque massa, cursus ut, gravida ut, lobortis eget,
