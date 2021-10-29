@@ -2,6 +2,11 @@
 <!-- CHECK ARGS -->
 {{ $args := (slice "context" "layoutPath" "name" "requiredParams") }}
 {{ $input := . }}
+
+{{ if or ($input.IsPage) ($input.IsSection) }}
+  {{ errorf "Must pass a dict to scratch/set with the args %s" $args }}
+{{ end }}
+
 {{ range $arg := $args }}
   {{ if not (isset $input $arg) }}
     {{ errorf "Component enrichment is missing arg %q" $arg }}
@@ -36,12 +41,6 @@
 {{ end }}
 
 {{ with .context }}
-  <!-- COMPONENT DIRECTORY  -->
-  {{ if isset .Params "componentdirectory" }}
-    {{ $scratch.Set "componentDirectory" .Params.componentDirectory }}
-  {{ else }}
-    {{ $scratch.Set "componentDirectory" "components" }}
-  {{ end }}
 
   <!-- COMPONENT LAYOUT -->
   {{ if .Params.component}}

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!-- initialize scratch at the page level -->
-{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layouts/_default/baseof" }}
-{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch := partial "dev/scratch/set-for-page" . }}
 {{ $scratch := partial "dev/scratch/enrich/meta" $scratch }}
 <html lang="en">
 
@@ -37,7 +35,6 @@
   {{ partial "component/header/header.html" . }}
   <div id="wrapper" class="wrapper">
 
-    {{ partial "dev/wrapper/page" $scratch }}
 
       {{ block "banner" . }}
         {{ if partial "if/show-block" (dict "block" "banner" "page" .) }}
@@ -75,7 +72,6 @@
         {{ end }}
       {{ end }}
 
-    {{ partial "dev/wrapper/bottom" $scratch }}
 
   </div>
 
