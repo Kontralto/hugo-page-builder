@@ -36,7 +36,7 @@
   {{ end }}
 {{ end }}
 
-{{ if and .contentRequired (not .context.Content) }}
+{{ if and .contentRequired (not ($scratch.Get "datasource").Content) }}
   {{ errorf "Content is required for %q but not set on %q" ($scratch.Get "layoutActive") ($scratch.Get "datasource").Path}}
 {{ end }}
 
