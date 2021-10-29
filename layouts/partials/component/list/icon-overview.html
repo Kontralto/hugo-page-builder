@@ -8,7 +8,7 @@
 
 {{ $scratch := partial "component/list/icon-overview.defaults.html" $scratch }}
 
-{{ partial "dev/wrapper/component-v2" $scratch }}
+{{ partial "dev/wrapper/component-v2-no-bg-image" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
 {{ if ($scratch.Get "hasListItems") }}
