@@ -1,6 +1,10 @@
 {{ $scratch := . }}
+{{ $datasource := $scratch.Get "datasource" }}
 
-<div id='{{ $scratch.Get "anchor" }}' class="component-wrapper">
+<div  id='{{ $datasource.Params.anchor }}'
+      class='component-wrapper
+            {{ $scratch.Get "classMargin" }}
+      '>
 
   {{ partial "dev/scratch/display" $scratch }}
 
@@ -13,7 +17,6 @@
               {{ $scratch.Get "classAdditional" }}
               {{ $scratch.Get "classBgColor" }}
               {{ $scratch.Get "classTextColor" }}
-              {{ $scratch.Get "classMargin" }}
               {{ $scratch.Get "classPadding" }}
               {{ $scratch.Get "classConstrainedWidth" }}'
   >
