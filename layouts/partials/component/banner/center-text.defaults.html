@@ -5,7 +5,7 @@
   {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
     "name" "classPadding"
     "value" .Params.classPadding
-    "fallback" "pt-8 pb-8 pb-md-12 pt-md-12"
+    "fallback" "py-8 py-md-12"
     "scratch" $scratch 
   ) }}
 
@@ -23,6 +23,9 @@
     "scratch" $scratch 
   ) }}
 
+  {{ $scratch.Set "classPadding"    (default "py-8 py-md-12"  .Params.classPadding  )}}
+  {{ $scratch.Set "classBgColor"    (default "bg-primary"     .Params.classBgColor  )}}
+  {{ $scratch.Set "classTextColor"  (default "text-light"     .Params.classTextColor)}}
 
 {{ end }}
 

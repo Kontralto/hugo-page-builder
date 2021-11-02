@@ -8,10 +8,6 @@
 {{ end }}
 
 <!-- SET SCRATCH -->
-{{ if .value }}
-  {{ .scratch.Set .name .value }}
-{{ else }}
-  {{ .scratch.Set .name .fallback }}
-{{ end }}
+{{ .scratch.Set .name (default .fallback .value) }}
 
 {{ return .scratch }}
