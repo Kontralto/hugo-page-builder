@@ -1,3 +1,8 @@
+---
+heading: "myheading"
+component: component/content/rich-text
+---
+
 consolidate:
 * standard
 * standard with CTA text
