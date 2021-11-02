@@ -25,6 +25,11 @@ params:
     - component/footer/footer.html
     - component/footer/sub-footer.html
 
+  persistentComponents:
+    - partial: component/banner/center-text
+      datasource: components-single
+      blockName: test
+
   google_analytics_id: ''
   meta:
     title: Hugo Page Builder - Test Site

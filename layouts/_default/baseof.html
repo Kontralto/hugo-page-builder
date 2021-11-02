@@ -61,11 +61,21 @@
         {{ end }}
       {{ end }}
 
-      {{ block "contact" . }}
-        {{ if partial "if/show-block" (dict "block" "contact" "page" .) }}
-          {{ with .Site.GetPage "contact"}}
-            {{ partial "component/banner/center-text" . }}
+      {{ block "persistentComponents" . }}
+
+        <!-- can block this whole section from rendering with page params or in the page template -->
+        {{ if partial "if/show-block" (dict "block" "persistentComponents" "page" .) }}
+        
+          {{ $context := . }}
+          {{ range site.Params.persistentComponents }}
+            {{ if (partial "if/persistent-component-config-is-valid" .) }}
+              <!-- can block a specific persistent component from showing with page params -->
+              {{ if partial "if/show-block" (dict "block" .blockName "page" $context) }}
+                {{ partial .partial (site.GetPage .datasource) }}
+              {{ end }}
+            {{ end }}
           {{ end }}
+
         {{ end }}
       {{ end }}
 
