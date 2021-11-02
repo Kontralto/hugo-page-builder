@@ -13,6 +13,10 @@ params:
   stylesheets:
     - src: scss/hugo-page-builder.scss
       dest: css/hbp.css
+
+  javascript:
+    - src: js/scripts.js
+      
   google_analytics_id: ''
   meta:
     title: Hugo Page Builder - Test Site

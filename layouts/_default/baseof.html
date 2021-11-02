@@ -84,13 +84,15 @@
   <!-- insertion point for js defined in templates -->
   {{ block "footer_js" . }}
   {{ end }}
-  
-  <!-- javascript -->
-  {{ $scripts := resources.Get "js/scripts.js" }}
-  {{ if .Site.IsServer }}
-  <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
-  {{ else }}
-  <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+
+  <!-- add javascript -->
+  {{ range site.Params.javascript }}
+    {{ $script := resources.Get .src}}
+    {{ if $isDevEnv }}
+      <script type="text/javascript" src="{{ $script.RelPermalink }}"></script>
+    {{ else }}
+      <script type="text/javascript" src="{{ ($script | minify | fingerprint).RelPermalink }}"></script>
+    {{ end }}
   {{ end }}
 
   <!-- bootstrap from CDN -->
