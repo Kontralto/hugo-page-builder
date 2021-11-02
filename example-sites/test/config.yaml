@@ -9,7 +9,10 @@ module:
     min: 0.88.0
 
 params:
-    
+
+  stylesheets:
+    - src: scss/hugo-page-builder.scss
+      dest: css/hbp.css
   google_analytics_id: ''
   meta:
     title: Hugo Page Builder - Test Site
