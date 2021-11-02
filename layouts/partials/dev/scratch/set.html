@@ -63,18 +63,6 @@
     {{ $listRoot := site.GetPage .Params.listRoot  }}
     {{ $scratch.Set "listRoot" $listRoot }}
     {{ $scratch.Set "hasListRoot" true }}
-  <!-- partial with dict -->
-  {{ else if ( isset . "listRoot" ) }}
-    <!-- item -->
-    {{ if (or .listRoot.IsNode .listRoot.IsPage .listRoot.IsSection ) }}
-      {{ $scratch.Set "listRoot" .listRoot }}
-      {{ $scratch.Set "hasDatasource" true }}
-    <!-- path -->
-    {{ else }}
-      {{ $listRoot := site.GetPage .listRoot  }}
-      {{ $scratch.Set "listRoot" $listRoot }}
-      {{ $scratch.Set "hasListRoot" true }}
-    {{ end }}
   <!-- fall back to datasource -->
   {{ else if $scratch.Get "hasDatasource" }}
     {{ $scratch.Set "listRoot" ($scratch.Get "datasource") }}
