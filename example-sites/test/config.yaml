@@ -17,6 +17,14 @@ params:
   javascript:
     - src: js/scripts.js
       
+  headerPartials:
+    - component/header/main-menu-mobile.html
+    - component/header/header.html
+
+  footerPartials:
+    - component/footer/footer.html
+    - component/footer/sub-footer.html
+
   google_analytics_id: ''
   meta:
     title: Hugo Page Builder - Test Site

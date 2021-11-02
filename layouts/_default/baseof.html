@@ -2,6 +2,7 @@
 <!-- initialize scratch at the page level -->
 {{ $scratch := partial "dev/scratch/set-for-page" . }}
 {{ $isDevEnv := $scratch.Get "isDevEnv" }}
+{{ $context := $scratch.Get "context" }}
 <html lang="en">
 
 <head>
@@ -32,9 +33,12 @@
 </head>
 
 <body class='page {{ block "body_classes" . }}{{ end }}'>
-  {{ partial "component/header/main-menu-mobile.html" . }}
 
-  {{ partial "component/header/header.html" . }}
+  <!-- header -->
+  {{ range site.Params.headerPartials }}
+    {{ partial . $context }}
+  {{ end }}
+
   <div id="wrapper" class="wrapper">
 
 
@@ -69,7 +73,7 @@
       {{ block "contact" . }}
         {{ if partial "if/show-block" (dict "block" "contact" "page" .) }}
           {{ with .Site.GetPage "contact"}}
-            {{ partial "dynamic-component-renderer" . }}
+            {{ partial "component/banner/center-text" . }}
           {{ end }}
         {{ end }}
       {{ end }}
@@ -78,8 +82,9 @@
   </div>
 
   <!-- footer -->
-  {{ partial "component/footer/footer.html" . }}
-  {{ partial "component/footer/sub-footer.html" . }}
+  {{ range site.Params.footerPartials }}
+    {{ partial . $context }}
+  {{ end }}
 
   <!-- insertion point for js defined in templates -->
   {{ block "footer_js" . }}
