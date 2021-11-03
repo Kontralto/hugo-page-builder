@@ -8,6 +8,13 @@
     "scratch" $scratch 
   ) }}
 
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classLinkStyle"
+    "value" .Params.classLinkStyle
+    "fallback" "button"
+    "scratch" $scratch 
+  ) }}
+
 {{ end }}
 
 

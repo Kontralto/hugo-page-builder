@@ -22,9 +22,8 @@
       
       {{ .Content }}
       
-      {{ if not ($scratch.Get "ctaHide") }}
-        {{ partial "element/button/primary" . }}
-      {{ end }}
+      {{ partial "element/cta" $scratch }}
+
     </div>
   </div>
 </div>

@@ -34,9 +34,7 @@
           </div>
         {{ end }}
         
-        {{ if and (not ($scratch.Get "ctaHide")) .Params.ctaText .Params.ctaLink }}
-          <a class='{{ $scratch.Get "classLinkStyle" }}' href="{{ .Params.ctaLink | relURL }}">{{ .Params.ctaText }}</a>
-        {{ end }}
+        {{ partial "element/cta" $scratch }}
     </div>
 
   </div>
