@@ -1,16 +1,18 @@
 {{ $scratch :=  partial "dev/scratch/set" (dict
   "context" .
-  "layoutPath" "content/block"
+  "layoutPath" "content/rich-text"
   "name" "content-block"
   "classAdditional" ""
   "requiredParams" (slice )
+  "contentRequired" false
+  "note" "content is not required but is a gate for rendering."
 ) }}
 
 {{ $scratch := partial "component/content/rich-text.defaults.html" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
-{{ if .Content }}
-<div class='container {{$scratch.Get "classPadding"}}'>
+{{ if .Content}}
+<div class='container {{ $scratch.Get "classPadding" }}'>
   <div class="row justify-content-start">
     <div class="col-12 col-md-8">
         <div class="mt-4">

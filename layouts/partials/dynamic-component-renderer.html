@@ -3,6 +3,6 @@
 {{ if .Params.component }}
   {{ partial .Params.component . }}
 {{ else }}
-  {{ warnf "%q is missing .Params.component. Falling back to content/block" .Path }}
+  {{ warnf "%q is missing .Params.component. Falling back to content/rich-text" .Path }}
   {{ partial "component/content/rich-text" . }}
 {{ end }}
