@@ -14,7 +14,7 @@
 {{ with $scratch.Get "datasource" }}
 <div class="container">
   <div class="row">
-    <div class='col-12 col-md-6 {{ if eq .Params.align "right" }}offset-md-6{{ end }} panel panel-white py-2'>
+    <div class='col-12 col-md-6 {{ if .Params.flip }}offset-md-6{{ end }} panel panel-white p-4'>
       
       {{ if .Params.heading}}
         <h2 class="text-primary text-capitalize">{{ .Params.heading }}</h2>
