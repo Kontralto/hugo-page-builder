@@ -21,12 +21,14 @@
     {{ end }}
 
     {{ range ($scratch.Get "listItems") }}
-    {{ if and .Params.heading .Params.icon }}
+    {{ if and .Params.heading }}
     <div class='mb-1 {{ $scratch.Get "columnClass" }}'>
         <div class="element element-summary-icon">
-            <div class="image">
+          <div class="image">
+            {{ if .Params.icon }}
               <img src="{{ .Site.BaseURL }}{{ .Params.icon }}"/>
-            </div>
+            {{ end }}
+          </div>
           <div>
             <h3 class="heading">
               <a href="{{ .Permalink }}">{{ .Params.heading }}</a>
@@ -44,7 +46,7 @@
 
     {{ if not (.Params.ctahide) }}
       <div class="col-12 text-center">
-        {{ partial "element/button/primary" ($scratch.Get "datasource") }}
+        {{ partial "element/cta" $scratch }}
       </div>
     {{ end }}
 
