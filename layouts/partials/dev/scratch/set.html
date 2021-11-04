@@ -56,12 +56,21 @@
   {{ $scratch.Set "draftNoticeActive" (and ($scratch.Get "draftNoticeEnabled") .Draft)}}
 
   
+  <!-- HOST PAGE -->
+  <!-- This is used for paginating components -->
+  <!-- the paginator needs to be attached to the page context and not the datasource -->
+
+  <!-- I would like to figure out how to make this automagical -->
+  {{ if .Params.hostPage }}  
+    {{ $scratch.Set "hostPage" (site.GetPage .Params.hostPage) }}
+  {{ end }}
+  <!-- /LIST ROOT -->
+  
   <!-- LIST ROOT -->
   {{ $scratch.Set "hasListRoot" false }}
   <!-- frontmatter -->
-  {{ if ( isset .Params "listroot" ) }}  
-    {{ $listRoot := site.GetPage .Params.listRoot  }}
-    {{ $scratch.Set "listRoot" $listRoot }}
+  {{ if .Params.listRoot }}  
+    {{ $scratch.Set "listRoot" (site.GetPage .Params.listRoot) }}
     {{ $scratch.Set "hasListRoot" true }}
   <!-- fall back to datasource -->
   {{ else if $scratch.Get "hasDatasource" }}

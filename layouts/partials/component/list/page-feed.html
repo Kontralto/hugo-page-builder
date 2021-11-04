@@ -3,7 +3,7 @@
   "layoutPath" "list/page-feed"
   "name" "list-page-feed"
   "classAdditional" ""
-  "requiredParams" (slice )
+  "requiredParams" (slice "hostpage")
   "contentRequired" false
 ) }}
 
@@ -12,10 +12,11 @@
 {{ partial "dev/wrapper/component-v2-no-bg-image" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
+
 <div class="container">
   <div class="row">
 
-  {{ range ( .Paginate ($scratch.Get "listItems").ByDate.Reverse 5).Pages }}
+  {{ range ( ($scratch.Get "hostPage").Paginate ($scratch.Get "listItems").ByDate.Reverse 5).Pages }}
     <div class='border-top border-primary page-feed-item mb-2  {{ $scratch.Get "columnClass" }}'>
       <a href="{{ .Permalink }}" class=''>
         <div class="py-2">
@@ -34,7 +35,7 @@
   {{ end }}
 
   <div class="d-flex justify-content-center col-12 ">
-    {{ template "_internal/pagination.html" . }}
+    {{ template "_internal/pagination.html" ($scratch.Get "hostPage") }}
   </div>
     
   </div>
