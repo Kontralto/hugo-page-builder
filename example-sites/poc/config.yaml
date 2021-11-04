@@ -1,0 +1,63 @@
+baseURL: /
+languageCode: en-us
+title: Hugo Page Builder
+enableGitInfo: true
+
+module:
+  hugoVersion:
+    extended: true
+    min: 0.88.0
+
+params:
+
+  stylesheets:
+    - src: scss/hugo-page-builder.scss
+      dest: css/hbp.css
+
+  javascript:
+    - src: js/scripts.js
+      
+  headerPartials:
+    - component/header/main-menu-mobile.html
+    - component/header/header.html
+
+  footerPartials:
+    - component/footer/footer.html
+    - component/footer/sub-footer.html
+
+  persistentComponents:
+
+  explicitComponentDeclarations: true
+
+  google_analytics_id: ''
+  meta:
+    title: Hugo Page Builder - Test Site
+    description: Placeholder content for expeditious theme development
+    type: website
+    url: example.com
+    image: /images/logo.png
+    twitter_card: summary
+    twitter_site: ''
+    twitter_creator: ''
+  debug:
+    print_scratch: true
+    show_drafts: true
+    enable_hot_edit: false
+
+menu:
+  main:
+    - name: Wrapper
+      url: /component-wrapper/
+      weight: 1
+    - name: Single
+      url: /components-single/
+      weight: 2
+    - name: List
+      url: /components-list/
+      weight: 3
+    - name: Taxonomy
+      url: /tags/
+      weight: 4
+
+taxonomies:
+  tag: tags

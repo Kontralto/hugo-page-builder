@@ -21,12 +21,24 @@
   }}
 {{ end }}
 
-<!-- get component directory root -->
-{{ $componentDirectory := .GetPage ($scratch.Get "componentDirectoryPath") }}
+{{ $componentDirectoryFolder := .GetPage ($scratch.Get "componentDirectoryPath") }}
 
 <!-- get components in directory -->
-{{ with $componentDirectory }}
+{{ with $componentDirectoryFolder }}
+{{ if site.Params.explicitComponentDeclarations }}
+
+  {{ $scratch.Set "components" (slice ) }}
+  {{ range ($scratch.Get "context").Params.components }}
+    {{ $component := $componentDirectoryFolder.Resources.Match . }}
+    {{ $scratch.Set "components" ( ($scratch.Get "components") | append $component ) }}
+
+  {{ end }}
+
+{{ else }}
+
   {{ $scratch.Set "components" (.Resources.ByType "page") }}
+
+{{ end }}
 {{ end }}
 
 <!-- return -->
