@@ -6,7 +6,7 @@
   "requiredParams" (slice )
 ) }}
 
-{{ $scratch := partial "component/banner/hero.defaults.html" $scratch }}
+{{ $scratch := partial "component/taxonomy/heading.defaults.html" $scratch }}
 
 {{ partial "dev/wrapper/component-v2" $scratch }}
 
@@ -15,9 +15,9 @@
   <div class="row">
     <div class="col-12">
       {{ if .Params.heading }}
-        <h1>{{ .Params.heading }}</h1>
+        <h1 class="mb-4">{{ .Params.heading }}</h1>
       {{ else }}
-        <h1>{{ title .Data.Plural }}</h1>
+        <h1 class="mb-4">{{ title .Data.Plural }}</h1>
       {{ end }}
       
       {{ if .Params.subheading }}
