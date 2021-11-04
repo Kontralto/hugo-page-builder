@@ -11,6 +11,7 @@ tags:
   - EKS
   - Kubernetes
   - Docker
+featured: true
 categories:
   - tools
 draft: true

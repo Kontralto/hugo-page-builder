@@ -5,16 +5,16 @@
     (and (site.IsServer) (not (eq hugo.Environment "production") ))
   )
 }}
-{{ .Set "showHints" 
-  (and 
-    (.Get "isDevEnv")
-    (site.Params.debug.show_hints)
-  )
-}}
 {{ .Set "draftNoticeEnabled" 
   (and 
     (.Get "isDevEnv")
     (site.Params.debug.show_drafts)
+  )
+}}
+{{ .Set "hotEditEnabled" 
+  (and 
+    (.Get "isDevEnv")
+    (site.Params.debug.enable_hot_edit)
   )
 }}
 {{ .Set "analyticsEnabled"

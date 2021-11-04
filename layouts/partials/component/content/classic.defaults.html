@@ -1,0 +1,42 @@
+{{ $x := newScratch }}
+
+{{ $scratch := . }}
+
+{{ with $scratch.Get "datasource" }}
+
+  {{ $scratch.Set "classConstrainedWidth" "constrained-width" }}
+  {{ if (eq .Params.constrainedWidth false) }}
+    {{ $scratch.Delete "classConstrainedWidth" }}
+  {{ end }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classPadding"
+    "value" .Params.classPadding
+    "fallback" "px-0"
+    "scratch" $scratch 
+  ) }}
+ 
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classBgColor"
+    "value" .Params.classBgColor
+    "fallback" "bg-primary"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classTextColor"
+    "value" .Params.classTextColor
+    "fallback" "text-white"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classLinkStyle"
+    "value" .Params.classLinkStyle
+    "fallback" "btn btn-outline-light"
+    "scratch" $scratch 
+  ) }}
+
+{{ end }}
+
+{{ return $scratch }}

@@ -1,0 +1,44 @@
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "content/classic"
+  "name" "content-classic"
+  "classAdditional" ""
+  "requiredParams" (slice )
+) }}
+
+{{ $datasource := $scratch.Get "datasource" }}
+{{ $bgPosition := $scratch.Get "backgroundPosition" }}
+
+{{ $scratch := partial "component/content/classic.defaults.html" $scratch }}
+
+{{ partial "dev/wrapper/component-v2-no-bg-image" $scratch }}
+
+{{ with $scratch.Get "datasource" }}
+<div class="container">
+  <div class="row {{ if .Params.flip }} flex-md-row-reverse {{ end }}">
+
+    <div  
+      class=' classic-panel col-12 col-md-6 bg-image-default-settings {{ $scratch.Get "classBgColor" }}'
+      style=" background-position: {{ $bgPosition }};
+              background-image: url('{{ $datasource.Params.image | relURL }}');"
+    ></div>
+
+    <div class='classic-panel p-4 col-12 col-md-6 {{ $scratch.Get "classBgColor" }} {{ $scratch.Get "classTextColor" }}'>
+        {{ if .Params.heading}}
+          <h2 class="text-capitalize mb-4">{{ .Params.heading }}</h2>
+        {{ end }}
+
+        {{ if .Content }}
+          <div class="body mb-4">
+            {{ .Content }}
+          </div>
+        {{ end }}
+        
+        {{ partial "element/cta" $scratch }}
+    </div>
+
+  </div>
+</div>
+{{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}

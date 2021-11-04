@@ -6,4 +6,5 @@ subheading: 'Services that grow with your business'
 image: 'https://source.unsplash.com/eluzJSfkNCk/1600x400'
 ctaText: "View all services"
 ctaLink: "/services"
+componentDirectory: _components
 ---

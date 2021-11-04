@@ -71,3 +71,9 @@ $spacers: map-merge(
   ),
   $spacers
 );
+
+// button
+// https://getbootstrap.com/docs/5.0/components/buttons/#variables
+$btn-padding-y: .5rem;
+$btn-padding-x: 2rem;
+$btn-border-radius: 1px;

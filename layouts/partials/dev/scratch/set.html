@@ -2,6 +2,11 @@
 <!-- CHECK ARGS -->
 {{ $args := (slice "context" "layoutPath" "name" "requiredParams") }}
 {{ $input := . }}
+
+{{ if or ($input.IsPage) ($input.IsSection) }}
+  {{ errorf "Must pass a dict to scratch/set with the args %s" $args }}
+{{ end }}
+
 {{ range $arg := $args }}
   {{ if not (isset $input $arg) }}
     {{ errorf "Component enrichment is missing arg %q" $arg }}
@@ -19,6 +24,10 @@
 {{ $scratch := partial "dev/scratch/enrich/datasource" $scratch }}
 {{ $scratch.Set "layoutActive" (printf "/layouts/partials/%s" .layoutPath)}}
 {{ $scratch.Set "componentName" .name}}
+{{ $scratch.Set "classAdditional" .classAdditional }}
+
+<!-- set component defaults -->
+{{ $scratch := partial "component/defaults.html" $scratch }}
 
 <!-- component input validation -->
 {{ range .requiredParams }}
@@ -27,13 +36,11 @@
   {{ end }}
 {{ end }}
 
+{{ if and .contentRequired (not ($scratch.Get "datasource").Content) }}
+  {{ errorf "Content is required for %q but not set on %q" ($scratch.Get "layoutActive") ($scratch.Get "datasource").Path}}
+{{ end }}
+
 {{ with .context }}
-  <!-- COMPONENT DIRECTORY  -->
-  {{ if isset .Params "componentdirectory" }}
-    {{ $scratch.Set "componentDirectory" .Params.componentDirectory }}
-  {{ else }}
-    {{ $scratch.Set "componentDirectory" "components" }}
-  {{ end }}
 
   <!-- COMPONENT LAYOUT -->
   {{ if .Params.component}}
@@ -49,25 +56,22 @@
   {{ $scratch.Set "draftNoticeActive" (and ($scratch.Get "draftNoticeEnabled") .Draft)}}
 
   
+  <!-- HOST PAGE -->
+  <!-- This is used for paginating components -->
+  <!-- the paginator needs to be attached to the page context and not the datasource -->
+
+  <!-- I would like to figure out how to make this automagical -->
+  {{ if .Params.hostPage }}  
+    {{ $scratch.Set "hostPage" (site.GetPage .Params.hostPage) }}
+  {{ end }}
+  <!-- /LIST ROOT -->
+  
   <!-- LIST ROOT -->
   {{ $scratch.Set "hasListRoot" false }}
   <!-- frontmatter -->
-  {{ if ( isset . "Params.listRoot" ) }}  
-    {{ $listRoot := site.GetPage .Params.listRoot  }}
-    {{ $scratch.Set "listRoot" $listRoot }}
+  {{ if .Params.listRoot }}  
+    {{ $scratch.Set "listRoot" (site.GetPage .Params.listRoot) }}
     {{ $scratch.Set "hasListRoot" true }}
-  <!-- partial with dict -->
-  {{ else if ( isset . "listRoot" ) }}
-    <!-- item -->
-    {{ if (or .listRoot.IsNode .listRoot.IsPage .listRoot.IsSection ) }}
-      {{ $scratch.Set "listRoot" .listRoot }}
-      {{ $scratch.Set "hasDatasource" true }}
-    <!-- path -->
-    {{ else }}
-      {{ $listRoot := site.GetPage .listRoot  }}
-      {{ $scratch.Set "listRoot" $listRoot }}
-      {{ $scratch.Set "hasListRoot" true }}
-    {{ end }}
   <!-- fall back to datasource -->
   {{ else if $scratch.Get "hasDatasource" }}
     {{ $scratch.Set "listRoot" ($scratch.Get "datasource") }}
@@ -105,12 +109,18 @@
 
   <!-- /LIST ITEMS -->
 
+  {{ if .Params.constrainedWidth }}
+    {{ $scratch.Set "classConstrainedWidth" "constrained-width" }}
+  {{ end }}
+
+  {{/*  TODO: REMOVE  */}}
   {{ if isset .Params "ctahide"}}
     {{ $scratch.Set "ctaHide" .Params.ctaHide }}
   {{ else }}
     {{ $scratch.Set "ctaHide" false }}
   {{ end }}
 
+  {{/*  TODO: REMOVE  */}}
   {{ if isset .Params "columnclass"}}
     {{ $scratch.Set "columnClass" .Params.columnclass }}
   {{ end }}

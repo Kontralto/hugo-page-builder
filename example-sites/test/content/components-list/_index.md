@@ -1,8 +1,6 @@
 ---
-title: 'Blog'
-date: 2018-02-10T11:52:18+07:00
-heading: 'Blog'
-subheading: 'Cool stuff about tech'
-image: 'https://source.unsplash.com/eluzJSfkNCk/1600x400'
-draft: true
+title: 'Components - List'
+date: 2021-11-01T11:11:11-06:00
+heading: 'Components - List'
+type: page
 ---

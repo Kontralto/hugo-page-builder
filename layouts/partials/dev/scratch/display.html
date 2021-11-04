@@ -2,6 +2,14 @@
 {{ $context := ($scratch.Get "context") }}
 {{ $datasource := ($scratch.Get "datasource") }}
 
+{{ $datasourceScratch :=  partial "dev/scratch/set" (dict
+  "context" $datasource
+  "layoutPath" ""
+  "name" ""
+  "classAdditional" ""
+  "requiredParams" (slice)
+) }}
+
 {{ $accordionID    := print "id-" (partial "get/random-sha1" . ) }}
 
 
@@ -43,11 +51,11 @@
               "headingTitle"  "Datasource Scratch"
               "headingItem"   $datasource.Params.heading
               "headingPath"   $datasource.Path
-              "bodyData"      ( partial "dev/scratch/set-for-item-context" $datasource ).Values
+              "bodyData"      $datasourceScratch.Values
               "accordionID"   $accordionID
-              ) }}
-              
-              {{ partial "dev/scratch/_accordion-item" (dict
+          ) }}
+          
+          {{ partial "dev/scratch/_accordion-item" (dict
               "headingTitle"  "Datasource Params"
               "headingItem"   $datasource.Params.heading
               "headingPath"   $datasource.Path

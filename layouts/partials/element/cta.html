@@ -1,0 +1,7 @@
+{{ $scratch := . }}
+
+{{ with $scratch.Get "context" }}
+  {{ if and (not ($scratch.Get "ctaHide")) .Params.ctaText .Params.ctaLink }}
+    <a class='{{ $scratch.Get "classLinkStyle" }}' href="{{ .Params.ctaLink | relURL }}">{{ .Params.ctaText }}</a>
+  {{ end }}
+{{ end }}

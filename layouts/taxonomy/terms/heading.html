@@ -1,19 +1,33 @@
-<div class="component taxonomy-terms-heading">
-  <div id="hero" class="hero-image" style="background-image: url('{{ .Params.image | relURL }}')">
-    <div class="container">
-      <div class="text text-white">
-        {{ if .Params.heading }}
-          <h1>{{ .Params.heading }}</h1>
-        {{ else }}
-          <h1>{{ title .Data.Plural }}</h1>
-        {{ end }}
-        
-        {{ if .Params.subheading }}
-          <h2 class="h3">{{ .Params.subheading }}</h2>
-        {{ else }}
-          <h2 class="h3">{{ title (printf "Explore content by %s" .Data.Singular) }}</h2>
-        {{ end }}
-      </div>
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "taxonomy/terms/heading"
+  "name" "taxonomy-terms-heading"
+  "classAdditional" ""
+  "requiredParams" (slice )
+) }}
+
+{{ $scratch := partial "component/taxonomy/heading.defaults.html" $scratch }}
+
+{{ partial "dev/wrapper/component-v2" $scratch }}
+
+{{ with $scratch.Get "datasource" }}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      {{ if .Params.heading }}
+        <h1 class="mb-4">{{ .Params.heading }}</h1>
+      {{ else }}
+        <h1 class="mb-4">{{ title .Data.Plural }}</h1>
+      {{ end }}
+      
+      {{ if .Params.subheading }}
+        <h2 class="h3">{{ .Params.subheading }}</h2>
+      {{ else }}
+        <h2 class="h3">{{ title (printf "Explore content by %s" .Data.Singular) }}</h2>
+      {{ end }}
     </div>
   </div>
 </div>
+{{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}

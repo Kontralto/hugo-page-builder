@@ -1,8 +1,8 @@
-{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
+{{ $scratch := partial "dev/scratch/set-for-page" . }}
 
 {{ if .Params.component }}
   {{ partial .Params.component . }}
 {{ else }}
-  {{ warnf "%q is missing .Params.component. Falling back to content/block" .Path }}
-  {{ partial "component/content/block" . }}
+  {{ warnf "%q is missing .Params.component. Falling back to content/rich-text" .Path }}
+  {{ partial "component/content/rich-text" . }}
 {{ end }}

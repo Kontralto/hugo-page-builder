@@ -1,7 +1,7 @@
-{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
+{{ $scratch := partial "dev/scratch/set-for-page" . }}
 
 <div id="main-menu" class="main-menu">
-  <ul>
+  <ul class="m-0">
     {{ $currentPage := . }}
     {{ $showDraft := $scratch.Get "draftNoticeEnabled" }}
     {{ range .Site.Menus.main }}
@@ -12,9 +12,9 @@
         ( and $showDraft $draft )
         ( and ($linkedPage) (not $draft) ) }}
         <li
-          class="menu-item-{{ .Name | lower }}
-                {{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}
-                {{ if and $showDraft $draft }} is-draft {{ end }}">
+          class='menu-item-{{ .Name | lower }}
+                {{ if $currentPage.IsMenuCurrent "main" . }} active {{ end }}
+                {{ if and $showDraft $draft }} is-draft {{ end }}'>
                 <a href="{{.URL}}">
             {{ .Pre }}
             <span>{{ .Name }}</span>

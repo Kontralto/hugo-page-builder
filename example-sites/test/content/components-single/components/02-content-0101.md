@@ -1,8 +1,13 @@
-consolidate:
-* standard
-* standard with CTA text
-* image strip
+---
+component: component/content/classic
+image: 'images/jason-blackeye-1191801-unsplash.jpg'
+ctaText: Call Me To Action
+ctaLink: "#"
+ctaHide: true
+classLinkStyle: btn btn-light
+anchor: classic2
+---
 
-test case for
-* content, headings, image, cta text
-* just content
+# This is the classic component.
+
+It only has body content and the CTA is hidden.

@@ -1,12 +1,36 @@
-{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layout/component/banner/hero-fullscreen" }}
-{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "banner/hero-fullscreen"
+  "name" "banner-hero-fullscreen"
+  "classAdditional" "banner-hero fullscreen"
+  "requiredParams" (slice "heading")
+) }}
 
-{{ $context := $scratch.Get "context" }}
-{{ $datasource := $scratch.Get "datasource" }}
+{{ $scrollAnchor := partial "get/unique-id" . }}
+{{ $scratch := partial "component/banner/hero.defaults.html" $scratch }}
 
-{{ with $datasource }}
-  {{ partial "dev/wrapper/component" $scratch }}
-    {{ partial "component/banner/hero-fullscreen-no-wrap" . }}
-  {{ partial "dev/wrapper/bottom" $scratch }}
+{{ partial "dev/wrapper/component-v2" $scratch }}
+
+{{ with $scratch.Get "datasource" }}
+<div class="container">
+  <div class="my-auto">
+    <h1>{{ .Params.heading }}</h1>
+
+    {{ if .Params.subheading }}
+      <p class="mt-4">{{ .Params.subheading }}</p>
+    {{ end }}
+  </div>
+  <div class="hero-down text-center">
+    <a href="#{{$scrollAnchor}}">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 898.75 533.751" transform="matrix(.69 0 0 .69 15.5 15.5)" fill="#fff">
+            <path d="M224.687 309.061L0 84.372l42.186-42.186L84.372 0l182.815 182.811L450 365.622l182.5-182.496L815 .63l41.874 41.874L898.75 84.38 674.062 309.065 449.373 533.751 224.687 309.06z"/>
+        </svg>
+      </svg>
+    </a>
+  </div>
+</div>
 {{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}
+<div id="{{$scrollAnchor}}"></div>

@@ -1,9 +1,11 @@
 {{ $scratch := . }}
-{{ $scratch := partial "component/defaults.html" $scratch }}
-{{ $datasource := $scratch.Get "datasource"}}
+{{ $datasource := $scratch.Get "datasource" }}
 {{ $bgPosition := $scratch.Get "backgroundPosition"}}
 
-<div id='{{ $scratch.Get "anchor" }}' class="component-wrapper">
+<div  id='{{ $datasource.Params.anchor }}'
+      class='component-wrapper
+            {{ $scratch.Get "classMargin" }}
+      '>
 
   {{ partial "dev/scratch/display" $scratch }}
 
@@ -13,10 +15,11 @@
 
   <div  class='component component-{{ $scratch.Get "componentName" }} 
               {{ $scratch.Get "classCustom" }}
+              {{ $scratch.Get "classAdditional" }}
               {{ $scratch.Get "classBgColor" }}
               {{ $scratch.Get "classTextColor" }}
-              {{ $scratch.Get "classMargin" }}
-              {{ $scratch.Get "classPadding" }}'
+              {{ $scratch.Get "classPadding" }}
+              {{ $scratch.Get "classConstrainedWidth" }}'
         style=" background-position: {{ $bgPosition }};
                 background-image: url('{{ $datasource.Params.image | relURL }}')">
 

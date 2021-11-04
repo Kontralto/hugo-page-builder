@@ -1,5 +1,0 @@
-@each $level, $value in $grays {
-  .text-gray-#{$level} {
-    color: $value;
-  }
-}

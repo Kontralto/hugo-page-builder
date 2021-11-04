@@ -1,0 +1,18 @@
+{{ $scratch := newScratch }}
+
+{{ $scratch.Set "context" . }}
+{{ $scratch := partial "dev/scratch/enrich/site-config" $scratch }}
+{{ $scratch := partial "dev/scratch/enrich/meta" $scratch }}
+
+
+<!-- COMPONENT DIRECTORY  -->
+{{ if isset .Params "componentdirectory" }}
+  {{ $scratch.Set "componentDirectory" .Params.componentDirectory }}
+{{ else }}
+  {{ $scratch.Set "componentDirectory" "components" }}
+{{ end }}
+
+<!-- DRAFT NOTICE -->
+{{ $scratch.Set "draftNoticeActive" (and ($scratch.Get "draftNoticeEnabled") .Draft)}}
+
+{{ return $scratch }}

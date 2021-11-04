@@ -1,0 +1,7 @@
+.component {
+  @extend .bg-image-default-settings;
+
+  &.constrained-width {
+    @extend .container;
+  }
+}

@@ -1,0 +1,30 @@
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "content/standard-with-cta"
+  "name" "content-rich-text-with-cta"
+  "classAdditional" ""
+  "requiredParams" (slice )
+  "contentRequired" false
+  "note" "content is not required but is a gate for rendering."
+) }}
+
+{{ $scratch := partial "component/content/rich-text.defaults.html" $scratch }}
+
+{{ with $scratch.Get "datasource" }}
+{{ if .Content }}
+<div class='container {{ $scratch.Get "classPadding" }}'>
+  <div class="row justify-content-start">
+    <div class="col-12 col-lg-10">
+      <div class="content">
+        {{ .Content }}
+
+        {{ if and .Params.ctaText (not .Params.ctaHide) }}
+          <br>
+          <p class="lead">{{ .Params.ctaText }}.</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+{{ end }}

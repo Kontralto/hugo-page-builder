@@ -1,32 +1,32 @@
-{{ $scratch :=  partial "dev/scratch/set-for-item-context" . }}
-{{ $path := "layout/component/content/image-strip" }}
-{{ $scratch := partial "dev/scratch/enrich/layout-path" (dict "scratch" $scratch "path" $path) }}
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "content/image-strip"
+  "name" "content-image-strip"
+  "classAdditional" ""
+  "requiredParams" (slice )
+  "contentRequired" true
+) }}
+
+{{ $scratch := partial "component/content/image-strip.defaults.html" $scratch }}
+
+{{ partial "dev/wrapper/component-v2" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ partial "dev/wrapper/component" $scratch }}
-    {{ if or .Params.heading .Content }}
-      <div class="component component-content-image-strip">
-        <div class="strip bg-cover bg-position-top bg-overlay" style="background-image: url('{{ .Params.background | relURL }}');">
-            <div class="container pt-17 pb-17">
-              <div class="row">
-                <div class="col-12 col-md-6 panel panel-white pt-2 pb-2 {{ if eq .Params.align "right" }}offset-md-6{{ end }}">
-                  
-                  {{ if .Params.heading}}
-                    <h2 class="text-primary text-capitalize">{{ .Params.heading }}</h2>
-                  {{ end }}
-                  
-                  {{ .Content }}
-                  
-                  {{ if not ($scratch.Get "ctaHide") }}
-                    {{ partial "element/button/primary" . }}
-                  {{ end }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    {{ else }}
-      {{ partial "component/hint/no-content" $scratch }}
-    {{ end }}
-  {{ partial "dev/wrapper/bottom" $scratch }}
+<div class="container">
+  <div class="row">
+    <div class='col-12 col-md-6 {{ if .Params.flip }}offset-md-6{{ end }} panel panel-white p-4'>
+      
+      {{ if .Params.heading}}
+        <h2 class="text-primary text-capitalize">{{ .Params.heading }}</h2>
+      {{ end }}
+      
+      {{ .Content }}
+      
+      {{ partial "element/cta" $scratch }}
+
+    </div>
+  </div>
+</div>
 {{ end }}
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}

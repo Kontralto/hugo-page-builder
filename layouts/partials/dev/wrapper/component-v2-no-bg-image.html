@@ -1,0 +1,24 @@
+{{ $scratch := . }}
+{{ $datasource := $scratch.Get "datasource" }}
+
+<div  id='{{ $datasource.Params.anchor }}'
+      class='component-wrapper
+            {{ $scratch.Get "classMargin" }}
+      '>
+
+  {{ partial "dev/scratch/display" $scratch }}
+
+  {{ if $scratch.Get "draftNoticeActive" }}
+    {{ partial "dev/wrapper/_draft" "This component is a draft"}}
+  {{ end }}
+
+  <div  class='component component-{{ $scratch.Get "componentName" }} 
+              {{ $scratch.Get "classCustom" }}
+              {{ $scratch.Get "classAdditional" }}
+              {{ $scratch.Get "classBgColor" }}
+              {{ $scratch.Get "classTextColor" }}
+              {{ $scratch.Get "classPadding" }}
+              {{ $scratch.Get "classConstrainedWidth" }}'
+  >
+
+<!-- closing div comes from wrapper/bottom -->

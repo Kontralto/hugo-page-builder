@@ -4,8 +4,8 @@
 {{ $bodyData      := .bodyData }}
 {{ $parentID      := .accordionID }}
 
-{{ $headingID := print "id-" (partial "get/random-sha1" . ) }}
-{{ $bodyID    := print "id-" (partial "get/random-sha1" . ) }}
+{{ $headingID :=  partial "get/unique-id" . }}
+{{ $bodyID    :=  partial "get/unique-id" . }}
 
 <div class="accordion-item">
             

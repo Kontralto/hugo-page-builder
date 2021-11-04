@@ -1,9 +1,12 @@
 .wrapper {
-  .fullscreen {
-    height: 100vh;
-  }
-  :first-child .fullscreen {
+  .component-wrapper:first-child  { 
+    .component.fullscreen {
       height: calc(100vh - #{$header-height});
     }
-  
+  }
+  .component-wrapper  { 
+    .component.fullscreen {
+      height: 100vh;
+    }
+  }
 }

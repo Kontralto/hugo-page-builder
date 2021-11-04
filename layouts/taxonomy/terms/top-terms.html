@@ -1,41 +1,40 @@
-{{ $scratch := partial "dev/scratch/set-for-item-context" . }}
+{{ $scratch :=  partial "dev/scratch/set" (dict
+  "context" .
+  "layoutPath" "taxonomy/terms/top-terms"
+  "name" "taxonomy-terms-top-terms"
+  "classAdditional" ""
+  "requiredParams" (slice )
+) }}
 
 {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
-  "name" "columnClass"
-  "value" .Params.columnClass
-  "fallback" "col-12 col-md-4"
+  "name" "quantity"
+  "value" .Params.quantityToHighlight
+  "fallback" 3
   "scratch" $scratch 
 ) }}
 
-{{ $scratch.Set "quantity" 3 }}
-{{ if .Params.quantityToHighlight }}
-  {{ $scratch.Set "quantity" .Params.quantityToHighlight }}
-{{ end }}
+{{ partial "dev/wrapper/component-v2-no-bg-image" $scratch }}
 
-{{ $context := $scratch.Get "context" }}
-{{ $colClass := $scratch.Get "columnClass" }}
-
-<div class="component taxonomy-top-terms">
-  <div class="container pt-6 pb-6">
-    <div class="row">
-      <div class="col-12 mb-4">
-        <h2>Top {{ ($scratch.Get "quantity") }} {{ title .Data.Plural }}</h2>
-      </div>
-      {{ range first ($scratch.Get "quantity") .Data.Terms.ByCount }}
-          <div class="{{$colClass}} mb-3">
-            <a href="{{.Name}}" class="text-decoration-none" >
-              <div class="card h-100">
-                <div class="pt-2 pb-2 card-header" style="height:89px">
-                  <h3 class="h5 m-0">{{ title .Name }}</h3>
-                </div>
-                <div class="card-body  ps-4 pt-2 pb-2">
-                  <p class="m-0">Explore {{ len .Pages }} pieces of content</p>
-                </div>
-              </div>
-          </a>
-        </div>
-      {{ end }}
-
+<div class="container py-6">
+  <div class="row">
+    <div class="col-12 mb-4">
+      <h2>Top {{ ($scratch.Get "quantity") }} {{ title (replace .Data.Plural "-" " ") }}</h2>
     </div>
+    {{ range first ($scratch.Get "quantity") .Data.Terms.ByCount }}
+        <div class="col-12 col-md-4 mb-3">
+          <a href="{{.Name}}" class="text-decoration-none" >
+            <div class="card h-100">
+              <div class="py-2 card-header" style="height:89px">
+                <h3 class="h5 m-0">{{ title (replace .Name "-" " ") }}</h3>
+              </div>
+              <div class="card-body ps-4 py-2">
+                <p class="m-0">Explore {{ len .Pages }} pieces of content</p>
+              </div>
+            </div>
+        </a>
+      </div>
+    {{ end }}
   </div>
 </div>
+
+{{ partial "dev/wrapper/bottom-v2" $scratch }}

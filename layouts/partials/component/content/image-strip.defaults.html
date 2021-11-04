@@ -1,0 +1,22 @@
+{{ $scratch := . }}
+
+{{ with $scratch.Get "datasource" }}
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classPadding"
+    "value" .Params.classPadding
+    "fallback" "py-10"
+    "scratch" $scratch 
+  ) }}
+
+  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+    "name" "classLinkStyle"
+    "value" .Params.classLinkStyle
+    "fallback" "button"
+    "scratch" $scratch 
+  ) }}
+
+{{ end }}
+
+
+
+{{ return $scratch }}

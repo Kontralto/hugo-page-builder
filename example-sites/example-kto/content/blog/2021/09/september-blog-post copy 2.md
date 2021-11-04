@@ -11,7 +11,7 @@ tags:
   - OAI
   - Lambda@Edge
   - static site
-  
+featured: true
 categories:
   - tools
 draft: true

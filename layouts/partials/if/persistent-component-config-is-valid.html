@@ -1,0 +1,22 @@
+<!-- CHECK ARGS -->
+{{ $args := (slice "partial" "datasource" "blockName") }}
+{{ $input := . }}
+{{ $scratch := newScratch }}
+{{ $scratch.Set "fail" false }}
+
+{{ range $arg := $args }}
+  {{ if not (isset $input $arg) }}
+    {{ errorf "\n\n\t An entry in site.Params.persistentComponents is missing argument %q \n\t %s\n\n" $arg $input }}
+    {{ $scratch.Set "print" true }}
+    {{ $scratch.Set "fail" true }}
+  {{ end }}
+{{ end }}
+
+{{ $datasource := (default "" .datasource)}}
+
+{{ if and (.datasource) (not (site.GetPage $datasource)) }}
+  {{ errorf "datasource %q specified in site.Params.persistentComponents does not exist" .datasource }}
+  {{ $scratch.Set "fail" true }}
+{{ end }}
+
+{{ return not ($scratch.Get "fail") }}

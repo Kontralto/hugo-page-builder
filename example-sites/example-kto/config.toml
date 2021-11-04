@@ -24,8 +24,8 @@ enableGitInfo = true
 
   [params.debug]
     print_scratch = false
-    show_drafts = true
-    show_hints = false
+    show_drafts = false
+    enable_hot_edit = true
 
 [[menu.main]]
     name = "Services"
@@ -50,4 +50,3 @@ enableGitInfo = true
 [permalinks]
   blog = "/blog/:slug/"
 
-[taxonomies]
