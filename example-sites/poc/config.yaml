@@ -27,6 +27,8 @@ params:
 
   persistentComponents:
 
+  explicitComponentDeclarations: true
+
   google_analytics_id: ''
   meta:
     title: Hugo Page Builder - Test Site
