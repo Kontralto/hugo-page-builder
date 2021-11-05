@@ -43,7 +43,7 @@ params:
     twitter_site: ''
     twitter_creator: ''
   debug:
-    print_scratch: false
+    enable_scratch_printout: false
     enable_draft_notice: true
     enable_hot_edit: false
 

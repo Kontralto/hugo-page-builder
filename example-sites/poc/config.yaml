@@ -40,7 +40,7 @@ params:
     twitter_site: ''
     twitter_creator: ''
   debug:
-    print_scratch: true
+    enable_scratch_printout: true
     enable_draft_notice: true
     enable_hot_edit: false
 
