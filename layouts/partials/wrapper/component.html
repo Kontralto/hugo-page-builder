@@ -1,26 +1,26 @@
 {{ $scratch := . }}
+{{ $datasource := $scratch.Get "datasource" }}
+{{ $bgPosition := $scratch.Get "backgroundPosition"}}
 
-{{ if $scratch.Get "draftNoticeActive" }}
-  <div class="wrapper-component">
-    <div class="is-draft">
-      <div class="draft-notice pt-2 pb-2">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              This component is a draft
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- The final closing divs come from wrapper/bottom -->
-{{ end }}
-{{ partial "scratch/display" $scratch }}
-{{ if and ($scratch.Get "showHints") false }}
-<!-- 
-  this needs to be implemented better
+<div  id='{{ $datasource.Params.anchor }}'
+      class='component-wrapper
+            {{ $scratch.Get "classMargin" }}
+      '>
 
-  - visual hierarchy isn't clear
-  - only works for components that have the wrapper.
--->
-  {{ $scratch.Get "layoutActive" }}
-{{ end }}
+  {{ partial "scratch/display" $scratch }}
+
+  {{ if $scratch.Get "draftNoticeActive" }}
+    {{ partial "wrapper/_draft" "This component is a draft"}}
+  {{ end }}
+
+  <div  class='component component-{{ $scratch.Get "componentName" }} 
+              {{ $scratch.Get "classCustom" }}
+              {{ $scratch.Get "classAdditional" }}
+              {{ $scratch.Get "classBgColor" }}
+              {{ $scratch.Get "classTextColor" }}
+              {{ $scratch.Get "classPadding" }}
+              {{ $scratch.Get "classConstrainedWidth" }}'
+        style=" background-position: {{ $bgPosition }};
+                background-image: url('{{ $datasource.Params.image | relURL }}')">
+
+<!-- closing div comes from wrapper/bottom -->

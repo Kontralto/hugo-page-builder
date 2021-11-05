@@ -11,7 +11,7 @@
 
 {{ $scratch := partial "component/content/classic.defaults.html" $scratch }}
 
-{{ partial "wrapper/component-v2-no-bg-image" $scratch }}
+{{ partial "wrapper/component-no-bg-image" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
 <div class="container">
@@ -41,4 +41,4 @@
 </div>
 {{ end }}
 
-{{ partial "wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom" $scratch }}

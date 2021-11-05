@@ -19,7 +19,7 @@
 {{ $hasFeaturedPages := gt (len $featuredPages) 0 }}
 
 {{ if $hasFeaturedPages }}
-{{ partial "wrapper/component-v2-no-bg-image" $scratch }}
+{{ partial "wrapper/component-no-bg-image" $scratch }}
 <div class="container py-6">
   <div class="row">
     <div class="col-12 mb-4">
@@ -43,5 +43,5 @@
 
   </div>
 </div>
-{{ partial "wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom" $scratch }}
 {{ end }}

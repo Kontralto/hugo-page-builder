@@ -8,7 +8,7 @@
 
 {{ $scratch := partial "component/banner/intro.defaults.html" $scratch }}
 
-{{ partial "wrapper/component-v2" $scratch }}
+{{ partial "wrapper/component" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
 <div class="container">
@@ -23,4 +23,4 @@
 </div>
 {{ end }}
 
-{{ partial "wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom" $scratch }}
