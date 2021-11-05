@@ -1,4 +1,4 @@
-{{ $scratch := partial "dev/scratch/set-for-page" . }}
+{{ $scratch := partial "scratch/set-for-page" . }}
 
 {{- if not ($scratch.Get "analyticsEnabled") -}}
   <!-- Dont add Google analytics to localhost -->

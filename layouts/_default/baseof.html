@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- initialize scratch at the page level -->
-{{ $scratch := partial "dev/scratch/set-for-page" . }}
+{{ $scratch := partial "scratch/set-for-page" . }}
 {{ $isDevEnv := $scratch.Get "isDevEnv" }}
 {{ $context := $scratch.Get "context" }}
 <html lang="en">
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- add meta tags to page -->
-  {{ partial "dev/meta-tags" $scratch }}
+  {{ partial "meta-tags" $scratch }}
 
   <!-- add favicon -->
   <link rel="icon" href="{{ .Site.BaseURL }}favicon.png">

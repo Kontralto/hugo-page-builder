@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set" (dict
+{{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "banner/hero-standard"
   "name" "banner-hero"
@@ -8,7 +8,7 @@
 
 {{ $scratch := partial "component/banner/hero.defaults.html" $scratch }}
 
-{{ partial "dev/wrapper/component-v2" $scratch }}
+{{ partial "wrapper/component-v2" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
   <div class="container">
@@ -19,4 +19,4 @@
   </div>
 {{ end }}
 
-{{ partial "dev/wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom-v2" $scratch }}

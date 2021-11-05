@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set" (dict
+{{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "taxonomy/term/heading"
   "name" "taxonomy-term-heading"
@@ -8,7 +8,7 @@
 
 {{ $scratch := partial "component/taxonomy/heading.defaults.html" $scratch }}
 
-{{ partial "dev/wrapper/component-v2" $scratch }}
+{{ partial "wrapper/component-v2" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
 <div class="container">
@@ -29,4 +29,4 @@
 </div>
 {{ end }}
 
-{{ partial "dev/wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom-v2" $scratch }}

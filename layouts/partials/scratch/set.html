@@ -19,9 +19,9 @@
 <!-- ---------------- -->
 <!-- SET SCRATCH -->
 {{ $scratch := newScratch }}
-{{ $scratch := partial "dev/scratch/enrich/site-config" $scratch }}
+{{ $scratch := partial "scratch/enrich/site-config" $scratch }}
 {{ $scratch.Set "context" .context }}
-{{ $scratch := partial "dev/scratch/enrich/datasource" $scratch }}
+{{ $scratch := partial "scratch/enrich/datasource" $scratch }}
 {{ $scratch.Set "layoutActive" (printf "/layouts/partials/%s" .layoutPath)}}
 {{ $scratch.Set "componentName" .name}}
 {{ $scratch.Set "classAdditional" .classAdditional }}

@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set" (dict
+{{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "taxonomy/term-all"
   "name" "taxonomy-term-all"
@@ -6,14 +6,14 @@
   "requiredParams" (slice )
 ) }}
 
-{{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+{{ $scratch := partial "scratch/enrich/default-value" (dict
   "name" "columnClass"
   "value" .Params.columnClass
   "fallback" "col-12 col-md-4 col-lg-3"
   "scratch" $scratch 
 ) }}
 
-{{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+{{ $scratch := partial "scratch/enrich/default-value" (dict
   "name" "quantity"
   "value" .Params.quantityToHighlight
   "fallback" 3
@@ -22,7 +22,7 @@
 
 {{ $colClass := $scratch.Get "columnClass" }}
 
-{{ partial "dev/wrapper/component-v2" $scratch }}
+{{ partial "wrapper/component-v2" $scratch }}
 
 <div class="container">
   <div class="row">
@@ -49,4 +49,4 @@
   </div>
 </div>
 
-{{ partial "dev/wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom-v2" $scratch }}

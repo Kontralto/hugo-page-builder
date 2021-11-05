@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set" (dict
+{{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "form/cognito"
   "name" "form-cognito"
@@ -6,7 +6,7 @@
   "requiredParams" (slice "cognito_account" "cognito_form_id")
 ) }}
 
-{{ partial "dev/wrapper/component-v2" $scratch }}
+{{ partial "wrapper/component-v2" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
 <div class="container">
@@ -23,4 +23,4 @@
 </div>
 {{ end }}
 
-{{ partial "dev/wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom-v2" $scratch }}

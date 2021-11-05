@@ -1,7 +1,7 @@
 {{ $scratch := newScratch }}
 
-{{ $scratch := partial "dev/scratch/enrich/site-config" $scratch }}
-{{ $scratch := partial "dev/scratch/enrich/context" (dict "scratch" $scratch "context" .) }}
+{{ $scratch := partial "scratch/enrich/site-config" $scratch }}
+{{ $scratch := partial "scratch/enrich/context" (dict "scratch" $scratch "context" .) }}
 
 <!-- COMPONENT DIRECTORY  -->
 {{ if isset .Params "componentdirectory" }}

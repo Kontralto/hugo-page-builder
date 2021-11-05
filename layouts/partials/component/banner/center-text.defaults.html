@@ -2,28 +2,28 @@
 
 {{ with $scratch.Get "datasource" }}
 
-  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+  {{ $scratch := partial "scratch/enrich/default-value" (dict
     "name" "classPadding"
     "value" .Params.classPadding
     "fallback" "pt-8 pb-8 pb-md-12 pt-md-12"
     "scratch" $scratch 
   ) }}
 
-  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+  {{ $scratch := partial "scratch/enrich/default-value" (dict
   "name" "classBgColor"
   "value" .Params.classBgColor
   "fallback" "bg-primary"
   "scratch" $scratch 
   ) }}
 
-  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+  {{ $scratch := partial "scratch/enrich/default-value" (dict
     "name" "classTextColor"
     "value" .Params.classTextColor
     "fallback" "text-light"
     "scratch" $scratch 
   ) }}
 
-  {{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+  {{ $scratch := partial "scratch/enrich/default-value" (dict
     "name" "classLinkStyle"
     "value" .Params.classLinkStyle
     "fallback" "btn btn-outline-light"

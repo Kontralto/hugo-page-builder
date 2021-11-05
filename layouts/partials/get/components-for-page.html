@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set-for-page" . }}
+{{ $scratch :=  partial "scratch/set-for-page" . }}
 
 <!-- get filename without extension -->
 {{ $pathBase := (index (split (path.Base .Path) ".") 0) }}

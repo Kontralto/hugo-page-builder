@@ -2,7 +2,7 @@
 {{ $context := ($scratch.Get "context") }}
 {{ $datasource := ($scratch.Get "datasource") }}
 
-{{ $datasourceScratch :=  partial "dev/scratch/set" (dict
+{{ $datasourceScratch :=  partial "scratch/set" (dict
   "context" $datasource
   "layoutPath" ""
   "name" ""
@@ -21,7 +21,7 @@
         <!-- accordion -->
         <div class="accordion accordion-flush" id="{{ $accordionID }}">
             
-          {{ partial "dev/scratch/_accordion-item" (dict
+          {{ partial "scratch/_accordion-item" (dict
               "headingTitle"  "Context Scratch"
               "headingItem"   $context.Params.heading
               "headingPath"   $context.Path
@@ -29,7 +29,7 @@
               "accordionID"   $accordionID
           ) }}
 
-          {{ partial "dev/scratch/_accordion-item" (dict
+          {{ partial "scratch/_accordion-item" (dict
               "headingTitle"  "Context Params"
               "headingItem"   $context.Params.heading
               "headingPath"   $context.Path
@@ -38,7 +38,7 @@
           ) }}
           
           {{ if or $context.Data.Terms $context.Data.Term }}
-          {{ partial "dev/scratch/_accordion-item" (dict
+          {{ partial "scratch/_accordion-item" (dict
               "headingTitle"  "Taxonomy"
               "headingItem"   $context.Params.heading
               "headingPath"   $context.Path
@@ -47,7 +47,7 @@
           ) }}
           {{ end }}
 
-          {{ partial "dev/scratch/_accordion-item" (dict
+          {{ partial "scratch/_accordion-item" (dict
               "headingTitle"  "Datasource Scratch"
               "headingItem"   $datasource.Params.heading
               "headingPath"   $datasource.Path
@@ -55,7 +55,7 @@
               "accordionID"   $accordionID
           ) }}
           
-          {{ partial "dev/scratch/_accordion-item" (dict
+          {{ partial "scratch/_accordion-item" (dict
               "headingTitle"  "Datasource Params"
               "headingItem"   $datasource.Params.heading
               "headingPath"   $datasource.Path

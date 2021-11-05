@@ -6,10 +6,10 @@
             {{ $scratch.Get "classMargin" }}
       '>
 
-  {{ partial "dev/scratch/display" $scratch }}
+  {{ partial "scratch/display" $scratch }}
 
   {{ if $scratch.Get "draftNoticeActive" }}
-    {{ partial "dev/wrapper/_draft" "This component is a draft"}}
+    {{ partial "wrapper/_draft" "This component is a draft"}}
   {{ end }}
 
   <div  class='component component-{{ $scratch.Get "componentName" }} 

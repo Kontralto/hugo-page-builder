@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set" (dict
+{{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "taxonomy/term-featured"
   "name" "taxonomy-term-featured"
@@ -6,7 +6,7 @@
   "requiredParams" (slice )
 ) }}
 
-{{ $scratch := partial "dev/scratch/enrich/default-value" (dict
+{{ $scratch := partial "scratch/enrich/default-value" (dict
   "name" "quantity"
   "value" .Params.quantityToHighlight
   "fallback" 3
@@ -19,7 +19,7 @@
 {{ $hasFeaturedPages := gt (len $featuredPages) 0 }}
 
 {{ if $hasFeaturedPages }}
-{{ partial "dev/wrapper/component-v2-no-bg-image" $scratch }}
+{{ partial "wrapper/component-v2-no-bg-image" $scratch }}
 <div class="container py-6">
   <div class="row">
     <div class="col-12 mb-4">
@@ -43,5 +43,5 @@
 
   </div>
 </div>
-{{ partial "dev/wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom-v2" $scratch }}
 {{ end }}

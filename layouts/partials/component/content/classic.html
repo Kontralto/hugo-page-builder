@@ -1,4 +1,4 @@
-{{ $scratch :=  partial "dev/scratch/set" (dict
+{{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "content/classic"
   "name" "content-classic"
@@ -11,7 +11,7 @@
 
 {{ $scratch := partial "component/content/classic.defaults.html" $scratch }}
 
-{{ partial "dev/wrapper/component-v2-no-bg-image" $scratch }}
+{{ partial "wrapper/component-v2-no-bg-image" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
 <div class="container">
@@ -41,4 +41,4 @@
 </div>
 {{ end }}
 
-{{ partial "dev/wrapper/bottom-v2" $scratch }}
+{{ partial "wrapper/bottom-v2" $scratch }}
