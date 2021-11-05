@@ -41,7 +41,7 @@ params:
     twitter_creator: ''
   debug:
     print_scratch: true
-    show_drafts: true
+    enable_draft_notice: true
     enable_hot_edit: false
 
 menu:
