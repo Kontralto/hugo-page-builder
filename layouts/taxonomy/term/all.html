@@ -6,19 +6,8 @@
   "requiredParams" (slice )
 ) }}
 
-{{ $scratch := partial "scratch/enrich/default-value" (dict
-  "name" "columnClass"
-  "value" .Params.columnClass
-  "fallback" "col-12 col-md-4 col-lg-3"
-  "scratch" $scratch 
-) }}
-
-{{ $scratch := partial "scratch/enrich/default-value" (dict
-  "name" "quantity"
-  "value" .Params.quantityToHighlight
-  "fallback" 3
-  "scratch" $scratch 
-) }}
+{{ $scratch.Set "columnClass"  (default "col-12 col-md-4 col-lg-3" .Params.classColumn) }}
+{{ $scratch.Set "quantity"  (default 3 .Params.quantityToHighlight) }}
 
 {{ $colClass := $scratch.Get "columnClass" }}
 
