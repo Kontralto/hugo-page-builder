@@ -22,7 +22,7 @@
 
     {{ range ($scratch.Get "listItems") }}
     {{ if and .Params.heading }}
-    <div class='mb-1 {{ $scratch.Get "columnClass" }}'>
+    <div class='mb-1 {{ $scratch.Get "classColumn" }}'>
         <div class="element element-summary-icon">
           <div class="image">
             {{ if .Params.icon }}

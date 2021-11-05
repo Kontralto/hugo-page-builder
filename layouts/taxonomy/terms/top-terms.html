@@ -6,12 +6,7 @@
   "requiredParams" (slice )
 ) }}
 
-{{ $scratch := partial "scratch/enrich/default-value" (dict
-  "name" "quantity"
-  "value" .Params.quantityToHighlight
-  "fallback" 3
-  "scratch" $scratch 
-) }}
+{{ $scratch.Set "quantity"  (default 3 .Params.quantityToHighlight) }}
 
 {{ partial "wrapper/component-no-bg-image" $scratch }}
 

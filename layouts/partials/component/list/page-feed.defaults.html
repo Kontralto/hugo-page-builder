@@ -1,20 +1,8 @@
 {{ $scratch := . }}
 
 {{ with $scratch.Get "datasource" }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "classPadding"
-    "value" .Params.classPadding
-    "fallback" "py-6 py-md-10"
-    "scratch" $scratch 
-  ) }}
-  
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "columnClass"
-    "value" .Params.columnClass
-    "fallback" "col-12"
-    "scratch" $scratch 
-  ) }}
+  {{ $scratch.Set "classPadding"  (default "py-6 py-md-10" .Params.classPadding) }}
+  {{ $scratch.Set "classColumn"   (default "col-12" .Params.classColumn) }}
 
 {{ end }}
 

@@ -1,48 +1,12 @@
 {{ $scratch := . }}
 
 {{ with $scratch.Get "datasource" }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "classPadding"
-    "value" .Params.classPadding
-    "fallback" "py-4"
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "classMargin"
-    "value" .Params.classMargin
-    "fallback" "my-0"
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "classCustom"
-    "value" .Params.classCustom
-    "fallback" ""
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "classBgColor"
-    "value" .Params.classBgColor
-    "fallback" ""
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "classTextColor"
-    "value" .Params.classTextColor
-    "fallback" "text-dark"
-    "scratch" $scratch 
-  ) }}
-
-  {{ $scratch := partial "scratch/enrich/default-value" (dict
-    "name" "backgroundPosition"
-    "value" .Params.backgroundPosition
-    "fallback" "0% 0%"
-    "scratch" $scratch 
-  ) }}
+  {{ $scratch.Set "classPadding"    (default "py-4" .Params.classPadding) }}
+  {{ $scratch.Set "classMargin"     (default "my-0" .Params.classMargin) }}
+  {{ $scratch.Set "classCustom"     (default "" .Params.classCustom) }}
+  {{ $scratch.Set "classBgColor"    (default "" .Params.classBgColor) }}
+  {{ $scratch.Set "classTextColor"  (default "text-dark" .Params.classTextColor) }}
+  {{ $scratch.Set "backgroundPosition"  (default "0% 0%" .Params.backgroundPosition) }}
 
 {{ end }}
 

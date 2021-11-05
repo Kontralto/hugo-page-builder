@@ -17,7 +17,7 @@
   <div class="row">
 
   {{ range ( ($scratch.Get "hostPage").Paginate ($scratch.Get "listItems").ByDate.Reverse 5).Pages }}
-    <div class='border-top border-primary page-feed-item mb-2  {{ $scratch.Get "columnClass" }}'>
+    <div class='border-top border-primary page-feed-item mb-2  {{ $scratch.Get "classColumn" }}'>
       <a href="{{ .Permalink }}" class=''>
         <div class="py-2">
 
