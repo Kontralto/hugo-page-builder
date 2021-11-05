@@ -30,6 +30,8 @@ params:
       datasource: components-single
       blockName: test
 
+  enable_explicit_components: true
+
   google_analytics_id: ''
   meta:
     title: Hugo Page Builder - Test Site

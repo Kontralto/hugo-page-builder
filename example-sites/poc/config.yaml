@@ -27,7 +27,7 @@ params:
 
   persistentComponents:
 
-  explicitComponentDeclarations: true
+  enable_explicit_components: true
 
   google_analytics_id: ''
   meta:
