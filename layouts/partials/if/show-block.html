@@ -1,1 +1,11 @@
+<!-- CHECK ARGS -->
+{{ $args := (slice "page" "block") }}
+{{ $input := . }}
+
+{{ range $arg := $args }}
+  {{ if not (isset $input $arg) }}
+    {{ errorf "missing arg %q in partial %q" $arg "if/show-block" }}
+  {{ end }}
+{{ end }}
+
 {{ return not (in .page.Params.hideBlock .block ) }}
