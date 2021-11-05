@@ -5,6 +5,7 @@ ctaText: Call Me To Action
 ctaLink: "#"
 ctaHide: true
 classLinkStyle: btn btn-light
+flip: true
 anchor: classic2
 ---
 
