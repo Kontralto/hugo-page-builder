@@ -8,13 +8,13 @@
 {{ .Set "draftNoticeEnabled" 
   (and 
     (.Get "isDevEnv")
-    (site.params.debug.enable_draft_notice)
+    (site.Params.enable_draft_notice)
   )
 }}
 {{ .Set "hotEditEnabled" 
   (and 
     (.Get "isDevEnv")
-    (site.Params.debug.enable_hot_edit)
+    (site.Params.enable_hot_edit)
   )
 }}
 {{ .Set "analyticsEnabled"

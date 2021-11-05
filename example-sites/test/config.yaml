@@ -31,6 +31,9 @@ params:
       blockName: test
 
   enable_explicit_components: true
+  enable_scratch_printout: false
+  enable_draft_notice: true
+  enable_hot_edit: false
 
   google_analytics_id: ''
   meta:
@@ -42,10 +45,6 @@ params:
     twitter_card: summary
     twitter_site: ''
     twitter_creator: ''
-  debug:
-    enable_scratch_printout: false
-    enable_draft_notice: true
-    enable_hot_edit: false
 
 menu:
   main:

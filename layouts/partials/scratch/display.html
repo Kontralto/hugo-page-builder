@@ -13,7 +13,7 @@
 {{ $accordionID    := print "id-" (partial "get/random-sha1" . ) }}
 
 
-{{ if and ($scratch.Get "isDevEnv") site.Params.debug.print_scratch }}
+{{ if and ($scratch.Get "isDevEnv") site.Params.print_scratch }}
   <div class="component component-dev-scratch-display border-top border-thick pt-4">
     <div class="container border-start border-thick">
       <div class="row">
