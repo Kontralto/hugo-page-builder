@@ -15,7 +15,7 @@
   {{ partial "meta-tags" $scratch }}
 
   <!-- add favicon -->
-  <link rel="icon" href="{{ .Site.BaseURL }}favicon.png">
+  <link rel="icon" href="/{{ site.Params.favicon }}">
 
   <!-- add stylesheet -->
   {{ range site.Params.stylesheets }}

@@ -16,7 +16,8 @@ params:
 
   javascript:
     - src: js/scripts.js
-      
+  
+  favicon: favicon.ico
 
   defaultPageComponents:
     banner: "component/banner/hero-standard"
