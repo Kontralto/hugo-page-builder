@@ -10,6 +10,11 @@ module:
 
 params:
 
+  enable_explicit_components: true
+  enable_scratch_printout: false
+  enable_draft_notice: true
+  enable_hot_edit: false
+  
   stylesheets:
     - src: scss/hugo-page-builder.scss
       dest: css/hbp.css
@@ -19,11 +24,6 @@ params:
   
   favicon: favicon.ico
 
-  defaultPageComponents:
-    banner: "component/banner/hero-standard"
-    content: "component/content/rich-text"
-    componentRenderer: "dynamic-component-renderer"
-      
   headerPartials:
     - component/header/main-menu-mobile.html
     - component/header/header.html
@@ -32,15 +32,15 @@ params:
     - component/footer/footer.html
     - component/footer/sub-footer.html
 
+  defaultPageComponents:
+    banner: "component/banner/hero-standard"
+    content: "component/content/rich-text"
+    componentRenderer: "dynamic-component-renderer"
+
   persistentComponents:
     - partial: component/banner/center-text
       datasource: components-single
       blockName: test
-
-  enable_explicit_components: true
-  enable_scratch_printout: false
-  enable_draft_notice: true
-  enable_hot_edit: false
 
   google_analytics_id: ''
   meta:
