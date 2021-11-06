@@ -71,20 +71,12 @@
       {{ end }}
 
       {{ block "persistentComponents" . }}
-
-        <!-- can block this whole section from rendering with page params or in the page template -->
         {{ if partial "if/show-block" (dict "block" "persistentComponents" "page" .) }}
-        
-          {{ $context := . }} <!-- needs to be redeclared inside block scope -->
-          {{ range site.Params.persistentComponents }}
-            {{ if (partial "if/persistent-component-config-is-valid" .) }}
-              <!-- can block a specific persistent component from showing with page params -->
-              {{ if partial "if/show-block" (dict "block" .blockName "page" $context) }}
-                {{ partial .partial (site.GetPage .datasource) }}
-              {{ end }}
-            {{ end }}
+          {{ $scratch := partial "scratch/set-for-page" . }}
+          {{ $persistentComponentsFolder := (site.GetPage site.Params.persistentComponentsFolder) }}
+          {{ range $persistentComponentsFolder.Resources.ByType "page" }}
+            {{ partial ($scratch.Get "defaultComponentRenderer") . }}
           {{ end }}
-
         {{ end }}
       {{ end }}
 

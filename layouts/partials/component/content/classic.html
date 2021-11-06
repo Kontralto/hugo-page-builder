@@ -23,7 +23,7 @@
               background-image: url('{{ $datasource.Params.image | relURL }}');"
     ></div>
 
-    <div class='classic-panel p-4 col-12 col-md-6 {{ $scratch.Get "classBgColor" }} {{ $scratch.Get "classTextColor" }}'>
+    <div class='classic-panel p-4 col-12 col-md-6 {{ $scratch.Get "classBgColor" }} {{ $scratch.Get "classTextColor" }} d-flex flex-column'>
         {{ if .Params.heading}}
           <h2 class="text-capitalize mb-4">{{ .Params.heading }}</h2>
         {{ end }}
@@ -33,8 +33,9 @@
             {{ .Content }}
           </div>
         {{ end }}
-        
-        {{ partial "element/cta" $scratch }}
+        <div class="mt-auto text-center">
+          {{ partial "element/cta" $scratch }}
+        </div>
     </div>
 
   </div>

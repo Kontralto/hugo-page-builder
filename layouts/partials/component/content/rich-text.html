@@ -1,7 +1,7 @@
 {{ $scratch :=  partial "scratch/set" (dict
   "context" .
   "layoutPath" "content/rich-text"
-  "name" "content-block"
+  "name" "content-rich-text"
   "classAdditional" ""
   "requiredParams" (slice )
   "contentRequired" false
@@ -11,15 +11,17 @@
 {{ $scratch := partial "component/content/rich-text.defaults.html" $scratch }}
 
 {{ with $scratch.Get "datasource" }}
-{{ if .Content}}
-<div id="{{ .Params.anchor }}" class='container {{ $scratch.Get "classPadding" }}'>
+{{ if .Content }}
+{{ partial "wrapper/component-no-bg-image" $scratch }}
+<div class='container'>
   <div class="row justify-content-start">
     <div class="col-12 col-lg-10">
-        <div class="mt-4 content">
+        <div class="content">
           {{ .Content }}
         </div>
     </div>
   </div>
 </div>
+{{ partial "wrapper/bottom" $scratch }}
 {{ end }}
 {{ end }}
