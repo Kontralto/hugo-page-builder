@@ -54,18 +54,12 @@ params:
 
 menu:
   main:
-    - name: Wrapper
-      url: /component-wrapper/
+    - name: About
+      url: /about/
       weight: 1
-    - name: Single
-      url: /components-single/
+    - name: Contact
+      url: /contact/
       weight: 2
-    - name: List
-      url: /components-list/
-      weight: 3
-    - name: Taxonomy
-      url: /tags/
-      weight: 4
 
 taxonomies:
   tag: tags
