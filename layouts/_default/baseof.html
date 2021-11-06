@@ -41,6 +41,12 @@
 
   <div id="wrapper" class="wrapper">
 
+      {{ partial "scratch/print-page" $scratch }}
+
+      {{ if $scratch.Get "draftNoticeActive" }}
+        {{ partial "wrapper/_draft" "This page is a draft"}}
+      {{ end }}
+
       {{ block "banner" . }}
         {{ if partial "if/show-block" (dict "block" "banner" "page" .) }}
           {{ partial "component/banner/hero-standard" . }}
