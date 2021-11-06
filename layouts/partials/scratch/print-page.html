@@ -1,0 +1,35 @@
+{{ $scratch := . }}
+{{ $context := ($scratch.Get "context") }}
+
+{{ $accordionID    := print "id-" (partial "get/random-sha1" . ) }}
+
+
+{{ if and ($scratch.Get "isDevEnv") site.Params.enable_scratch_printout }}
+
+  <div class="component component-dev-scratch-display border-top border-thick">
+    <div class="container border-start border-thick">
+      <div class="row">
+
+        <div class="accordion accordion-flush" id="{{ $accordionID }}">
+            
+          {{ partial "scratch/_accordion-item" (dict
+              "headingTitle"  "Page Scratch"
+              "headingItem"   $context.Params.heading
+              "headingPath"   $context.Path
+              "bodyData"      $scratch.Values
+              "accordionID"   $accordionID
+          ) }}
+
+          {{ partial "scratch/_accordion-item" (dict
+              "headingTitle"  "Page Params"
+              "headingItem"   $context.Params.heading
+              "headingPath"   $context.Path
+              "bodyData"      $context.Params 
+              "accordionID"   $accordionID
+          ) }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

@@ -15,7 +15,7 @@
   {{ partial "meta-tags" $scratch }}
 
   <!-- add favicon -->
-  <link rel="icon" href="{{ .Site.BaseURL }}favicon.png">
+  <link rel="icon" href="/{{ site.Params.favicon }}">
 
   <!-- add stylesheet -->
   {{ range site.Params.stylesheets }}
@@ -41,22 +41,31 @@
 
   <div id="wrapper" class="wrapper">
 
+      {{ partial "scratch/print-page" $scratch }}
+
+      {{ if $scratch.Get "draftNoticeActive" }}
+        {{ partial "wrapper/_draft" "This page is a draft"}}
+      {{ end }}
+
       {{ block "banner" . }}
+        {{ $scratch := partial "scratch/set-for-page" . }}
         {{ if partial "if/show-block" (dict "block" "banner" "page" .) }}
-          {{ partial "component/banner/hero-standard" . }}
+          {{ partial ($scratch.Get "defaultPageBanner") . }}
         {{ end }}
       {{ end }}
 
       {{ block "content" . }}
+        {{ $scratch := partial "scratch/set-for-page" . }}
         {{ if partial "if/show-block" (dict "block" "content" "page" .) }}
-          {{ partial "component/content/rich-text" . }}
+        {{ partial ($scratch.Get "defaultPageContent") . }}
         {{ end }}
       {{ end }}
-
+        
       {{ block "components" . }}
+        {{ $scratch := partial "scratch/set-for-page" . }}
         {{ if partial "if/show-block" (dict "block" "components" "page" .) }}
           {{ range partial "get/components-for-page" . }}
-            {{  partial "dynamic-component-renderer" . }}
+            {{  partial ($scratch.Get "defaultComponentRenderer") . }}
           {{ end }}
         {{ end }}
       {{ end }}
@@ -66,7 +75,7 @@
         <!-- can block this whole section from rendering with page params or in the page template -->
         {{ if partial "if/show-block" (dict "block" "persistentComponents" "page" .) }}
         
-          {{ $context := . }}
+          {{ $context := . }} <!-- needs to be redeclared inside block scope -->
           {{ range site.Params.persistentComponents }}
             {{ if (partial "if/persistent-component-config-is-valid" .) }}
               <!-- can block a specific persistent component from showing with page params -->

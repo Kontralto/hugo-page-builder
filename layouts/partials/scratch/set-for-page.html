@@ -15,4 +15,9 @@
 <!-- DRAFT NOTICE -->
 {{ $scratch.Set "draftNoticeActive" (and ($scratch.Get "draftNoticeEnabled") .Draft)}}
 
+<!-- DEFAULT COMPONENTS -->
+{{ $scratch.Set "defaultPageBanner"         (default "component/banner/hero-standard"  site.Params.defaultPageComponents.banner)            }}
+{{ $scratch.Set "defaultPageContent"        (default "component/content/rich-text"     site.Params.defaultPageComponents.content)           }}
+{{ $scratch.Set "defaultComponentRenderer"  (default "dynamic-component-renderer"      site.Params.defaultPageComponents.componentRenderer) }}
+
 {{ return $scratch }}

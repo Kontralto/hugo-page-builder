@@ -6,7 +6,7 @@
             {{ $scratch.Get "classMargin" }}
       '>
 
-  {{ partial "scratch/display" $scratch }}
+  {{ partial "scratch/print-component" $scratch }}
 
   {{ if $scratch.Get "draftNoticeActive" }}
     {{ partial "wrapper/_draft" "This component is a draft"}}
