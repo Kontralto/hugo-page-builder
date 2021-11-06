@@ -23,6 +23,8 @@ params:
     - src: js/scripts.js
   
   favicon: favicon.ico
+  logoDesktop: images/logo.png
+  logoMobile: images/logo-mobile.png
 
   headerPartials:
     - component/header/main-menu-mobile.html

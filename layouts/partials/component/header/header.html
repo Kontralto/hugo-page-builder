@@ -1,10 +1,10 @@
 <div class='header header-absolute'>
   <div class="container">
     <div class="logo">
-      <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Title }} Homepage" src="{{ .Site.BaseURL }}images/logo.png" /></a>
+      <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Title }} Homepage" src="{{ .Site.BaseURL }}{{ site.Params.logoDesktop }}" /></a>
     </div>
     <div class="logo-mobile">
-      <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Title }} Homepage" src="{{ .Site.BaseURL }}images/logo-mobile.png" /></a>
+      <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Title }} Homepage" src="{{ .Site.BaseURL }}{{ site.Params.logoMobile }}" /></a>
     </div>
     {{ partial "component/header/main-menu.html" . }}
     {{ partial "component/header/hamburger.html" . }}
