@@ -10,8 +10,8 @@ module:
 
 params:
 
-  enable_explicit_components: true
-  enable_scratch_printout: false
+  enable_explicit_components: false
+  enable_scratch_printout: true
   enable_draft_notice: true
   enable_hot_edit: false
   
@@ -39,10 +39,7 @@ params:
     content: "component/content/rich-text"
     componentRenderer: "dynamic-component-renderer"
 
-  persistentComponents:
-    - partial: component/banner/center-text
-      datasource: components-single
-      blockName: test
+  persistentComponentsFolder: site
 
   google_analytics_id: ''
   meta:
