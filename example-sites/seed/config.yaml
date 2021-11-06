@@ -11,7 +11,7 @@ module:
 params:
 
   enable_explicit_components: false
-  enable_scratch_printout: true
+  enable_scratch_printout: false
   enable_draft_notice: true
   enable_hot_edit: false
   
