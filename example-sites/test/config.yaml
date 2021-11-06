@@ -17,6 +17,12 @@ params:
   javascript:
     - src: js/scripts.js
       
+
+  defaultPageComponents:
+    banner: "component/banner/hero-standard"
+    content: "component/content/rich-text"
+    componentRenderer: "dynamic-component-renderer"
+      
   headerPartials:
     - component/header/main-menu-mobile.html
     - component/header/header.html

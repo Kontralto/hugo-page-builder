@@ -48,21 +48,24 @@
       {{ end }}
 
       {{ block "banner" . }}
+        {{ $scratch := partial "scratch/set-for-page" . }}
         {{ if partial "if/show-block" (dict "block" "banner" "page" .) }}
-          {{ partial "component/banner/hero-standard" . }}
+          {{ partial ($scratch.Get "defaultPageBanner") . }}
         {{ end }}
       {{ end }}
 
       {{ block "content" . }}
+        {{ $scratch := partial "scratch/set-for-page" . }}
         {{ if partial "if/show-block" (dict "block" "content" "page" .) }}
-          {{ partial "component/content/rich-text" . }}
+        {{ partial ($scratch.Get "defaultPageContent") . }}
         {{ end }}
       {{ end }}
-
+        
       {{ block "components" . }}
+        {{ $scratch := partial "scratch/set-for-page" . }}
         {{ if partial "if/show-block" (dict "block" "components" "page" .) }}
           {{ range partial "get/components-for-page" . }}
-            {{  partial "dynamic-component-renderer" . }}
+            {{  partial ($scratch.Get "defaultComponentRenderer") . }}
           {{ end }}
         {{ end }}
       {{ end }}
