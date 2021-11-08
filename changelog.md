@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v2.6
+* Make quickstart init script
+
 ## v2.5
 * Update run scripts for the quickstart site
 * Fix erroneous steps in the quickstart instructions found in README.md 
