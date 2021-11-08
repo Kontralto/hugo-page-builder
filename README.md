@@ -2,20 +2,28 @@
 
 ## get started with the example site
 
+Initialize a new hugo site
 ```
 hugo new site mySite
-
 cd mySite
+
+```
+
+Add theme
+```
+git init
+
+git commit --allow-empty -m "Initial commit"
+
 git submodule add https://github.com/Kontralto/hugo-page-builder themes/hugo-page-builder
 
-cp -r themes/example-sites/seed/* .
-rm config.toml
 ```
-manually add 
+
+Bootstrap the seed site
 ```
-theme: hugo-page-builder
+sh themes/hugo-page-builder/scripts/quickstart.sh
+
 ```
-to the top of `config.yaml`.
 
 Run local server: 
 ```

@@ -2,7 +2,6 @@ baseURL: /
 languageCode: en-us
 title: Hugo Page Builder
 enableGitInfo: true
-theme: hugo-page-builder
 
 module:
   hugoVersion:
