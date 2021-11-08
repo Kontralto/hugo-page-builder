@@ -1,12 +1,7 @@
-git init
+cp -r themes/hugo-page-builder/example-sites/seed/* .
+cp themes/hugo-page-builder/example-sites/seed/.gitignore .
 
-git commit --allow-empty -m "Initial commit"
-
-git submodule add https://github.com/Kontralto/hugo-page-builder themes/hugo-page-builder
-
-git add -A
-
-git commit -m "Add Hugo Page Builder theme"
+rm config.toml config.theme-dev.sh scripts/serve.theme-dev.sh
 
 git add -A
 git commit -m "Initialize project with quickstart site from Hugo Page Builder"
