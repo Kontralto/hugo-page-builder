@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v2.5
+* Update run scripts for the quickstart site
+* Fix erroneous steps in the quickstart instructions found in README.md 
+
 ## v2.4
 * Fix default CTA class for `list/icon-overview` component
 
