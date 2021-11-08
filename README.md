@@ -8,7 +8,8 @@ hugo new site mySite
 cd mySite
 git submodule add https://github.com/Kontralto/hugo-page-builder themes/hugo-page-builder
 
-cp -r mySite/themes/example-sites/seed .
+cp -r themes/example-sites/seed/* .
+rm config.toml
 ```
 manually add 
 ```
