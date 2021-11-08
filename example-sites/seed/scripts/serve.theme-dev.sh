@@ -1,0 +1,1 @@
+hugo server --buildDrafts --contentDir example-sites/seed/content --config example-sites/seed/config.yaml --environment develop  --disableFastRender --ignoreCache

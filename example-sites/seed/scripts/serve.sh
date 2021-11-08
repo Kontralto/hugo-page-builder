@@ -1,1 +1,1 @@
-sh ../example-sites/seed/scripts/serve.sh
+hugo server --buildDrafts --environment develop  --disableFastRender --ignoreCache
