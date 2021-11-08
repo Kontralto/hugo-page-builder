@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v2.7
+* Fix bug in init script
+
 ## v2.6
 * Make quickstart init script
 
