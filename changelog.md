@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v2.3
+* Make `partials/element/cta.html` use the Datasource content item for rendering instead of the Context.
+
 ## v2.2
 * Created quickstart example site at `example-sites/seed`
 * added readme with quickstart instructions
