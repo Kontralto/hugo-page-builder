@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v2.4
+* Fix default CTA class for `list/icon-overview` component
+
 ## v2.3
 * Make `partials/element/cta.html` use the Datasource content item for rendering instead of the Context.
 
