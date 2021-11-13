@@ -1,9 +1,9 @@
 .is-draft {
-  border: 5px solid $warn;
+  border: 5px solid $warning;
   &.is-draft-page {
     border: 0px
   }
   .draft-notice {
-    background-color: $warn;
+    background-color: $warning;
   }
 }
