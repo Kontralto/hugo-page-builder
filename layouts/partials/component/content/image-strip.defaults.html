@@ -1,8 +1,9 @@
 {{ $scratch := . }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ $scratch.Set "classPadding"    (default "py-10" .Params.classPadding) }}
-  {{ $scratch.Set "classLinkStyle"  (default "btn"  .Params.classLinkStyle) }}
+  {{ $scratch.Set "classPadding"    (default "py-10"  .Params.classPadding) }}
+  {{ $scratch.Set "classLinkStyle"  (default "btn"    .Params.classLinkStyle) }}
+  {{ $scratch.Set "classMargin"     (default "my-0"   .Params.classMargin) }}
 
 {{ end }}
 

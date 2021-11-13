@@ -2,6 +2,7 @@
 
 {{ with $scratch.Get "datasource" }}
   {{ $scratch.Set "classPadding"    (default "py-8 py-md-12"  .Params.classPadding) }}
+  {{ $scratch.Set "classMargin"     (default "my-0"           .Params.classMargin) }}
   {{ $scratch.Set "classBgColor"    (default "bg-primary"     .Params.classBgColor) }}
   {{ $scratch.Set "classTextColor"  (default "text-light"     .Params.classTextColor) }}
   {{ $scratch.Set "classLinkStyle"  (default "btn btn-outline-light"  .Params.classLinkStyle) }}

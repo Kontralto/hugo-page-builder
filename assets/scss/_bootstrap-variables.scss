@@ -17,11 +17,29 @@ $grid-gutter-width: 20px;
 
 $white: #ffffff;
 $black: #000000;
+
+// https://coolors.co/475f72-43454d-dad1bb-e76b74-5bc0eb-ffca3a-00a676
 $primary: #475F72;
 $secondary: #43454d;
 $tertiary: #DAD1BB;
-$error: #FF1B1C;
-$warn: #FFCA3A;
+$danger: #E76B74;
+$warning: #FFCA3A;
+$success: #00A676;
+$info: #5BC0EB;
+$light: #ddd;
+$dark: #222;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "tertiary":   $tertiary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
 
 // Links
 $link-color: $primary;
@@ -33,15 +51,13 @@ $link-hover-decoration: underline;
 $font-family-base: 'Open Sans', 'Helvetica Neue', Arial, sans-serif,
   -apple-system;
 $font-family-heading: 'Lato', 'Helvetica Neue', Arial, sans-serif, -apple-system;
-$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-size-base: 1.3rem; // Assumes the browser default, typically `16px`
 $font-weight-thin: 200;
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 $font-weight-base: $font-weight-normal;
 $line-height-base: 1.6;
-
-$headings-font-weight: 400;
 
 $spacer: 1rem;
 $spacers: ();
@@ -71,6 +87,13 @@ $spacers: map-merge(
   ),
   $spacers
 );
+
+$headings-margin-bottom:      $spacer * 2;
+$headings-font-weight:        500;
+$headings-line-height:        1.25;
+$headings-color:              null;
+
+$paragraph-margin-bottom:     $spacer;
 
 // button
 // https://getbootstrap.com/docs/5.0/components/buttons/#variables

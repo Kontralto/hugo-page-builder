@@ -1,8 +1,9 @@
 {{ $scratch := . }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ $scratch.Set "classPadding"    (default "pt-6 pb-2 pt-md-1"  .Params.classPadding) }}
-  {{ $scratch.Set "classTextColor"  (default "text-primary" .Params.classTextColor) }}
+  {{ $scratch.Set "classPadding"    (default "pt-2 pt-md-6 pb-2 "   .Params.classPadding) }}
+  {{ $scratch.Set "classMargin"     (default "my-0"                 .Params.classMargin) }}
+  {{ $scratch.Set "classTextColor"  (default "text-primary"         .Params.classTextColor) }}
 
 {{ end }}
 

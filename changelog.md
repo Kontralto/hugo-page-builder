@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.8
+* Update styling for larger text margins and font-size 
+* Update default values for components for better style consistency
+* Add no-bg-wrapper to rich-text-with-cta (was missing)
+* Properly extended Bootstrap's theme colors
+
 ## v2.7
 * Fix bug in init script
 

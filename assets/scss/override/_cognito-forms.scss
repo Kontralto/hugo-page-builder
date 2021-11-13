@@ -4,14 +4,14 @@
   margin-right: -7px !important;
 
   .c-required .c-label:after {
-    color: $error !important;
+    color: $danger !important;
   }
   
   .c-forms-form .c-validation, 
   .c-forms-form .c-error:after, 
   .c-forms-form .c-error .toggle-on:after,
   .c-forms-form .c-validation-icon {
-    background-color: $error !important;
+    background-color: $danger !important;
   }
 
   .c-forms-form .c-validation {

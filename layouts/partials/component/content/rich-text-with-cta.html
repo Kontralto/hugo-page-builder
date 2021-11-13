@@ -12,7 +12,8 @@
 
 {{ with $scratch.Get "datasource" }}
 {{ if .Content }}
-<div id="{{ .Params.anchor }}" class='container {{ $scratch.Get "classPadding" }}'>
+{{ partial "wrapper/component-no-bg-image" $scratch }}
+<div class='container'>
   <div class="row justify-content-start">
     <div class="col-12 col-lg-10">
       <div class="content">
@@ -26,5 +27,6 @@
     </div>
   </div>
 </div>
+{{ partial "wrapper/bottom" $scratch }}
 {{ end }}
 {{ end }}
