@@ -1,12 +1,12 @@
 {{ $scratch := . }}
 
 {{ with $scratch.Get "datasource" }}
-  {{ $scratch.Set "classPadding"    (default "py-4" .Params.classPadding) }}
-  {{ $scratch.Set "classMargin"     (default "my-0" .Params.classMargin) }}
-  {{ $scratch.Set "classCustom"     (default "" .Params.classCustom) }}
-  {{ $scratch.Set "classBgColor"    (default "" .Params.classBgColor) }}
-  {{ $scratch.Set "classTextColor"  (default "text-dark" .Params.classTextColor) }}
-  {{ $scratch.Set "backgroundPosition"  (default "0% 0%" .Params.backgroundPosition) }}
+  {{ $scratch.Set "classPadding"        (default "py-4 py-md-8" .Params.classPadding) }}
+  {{ $scratch.Set "classMargin"         (default "my-2 my-md-8" .Params.classMargin)  }}
+  {{ $scratch.Set "classCustom"         (default "" .Params.classCustom)              }}
+  {{ $scratch.Set "classBgColor"        (default "" .Params.classBgColor)             }}
+  {{ $scratch.Set "classTextColor"      (default "text-dark" .Params.classTextColor)  }}
+  {{ $scratch.Set "backgroundPosition"  (default "0% 0%" .Params.backgroundPosition)  }}
 
 {{ end }}
 

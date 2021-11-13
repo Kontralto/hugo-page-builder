@@ -2,6 +2,7 @@
 
 {{ with $scratch.Get "datasource" }}
   {{ $scratch.Set "classPadding"    (default "pb-2"       .Params.classPadding) }}
+  {{ $scratch.Set "classMargin"     (default "my-0"       .Params.classMargin) }}
   {{ $scratch.Set "classBgColor"    (default "bg-primary" .Params.classBgColor) }}
   {{ $scratch.Set "classTextColor"  (default "text-light" .Params.classTextColor) }}
 
