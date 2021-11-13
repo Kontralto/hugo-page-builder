@@ -37,10 +37,7 @@ params:
     content: "component/content/rich-text"
     componentRenderer: "dynamic-component-renderer"
 
-  persistentComponents:
-    - partial: component/banner/center-text
-      datasource: components-single
-      blockName: test
+  persistentComponentsFolder: site
 
   google_analytics_id: ''
   meta:
